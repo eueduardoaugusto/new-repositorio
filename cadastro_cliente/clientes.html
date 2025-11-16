@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantinho do Pet - Cliente</title>
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/clientes_style.css">
+</head>
+<body>
+
+  <div id="header"></div>
+  <div id="pageType" data-type="cliente"></div>
+
+  <script src="/assets/js/header.js"></script>
+
+
+
+
+  <main>
+    <div class="botoes-topo">
+      <a href="cadastro_cliente.html" class="btn-verde">+ CLIENTE</a>
+      <div class="dropdown-acoes">
+        <button class="btn-branco">OUTRAS AÇÕES</button>
+        <div class="menu-acoes">
+          <a href="#">Excluir</a>
+          <a href="#">Exportar</a>
+        </div>
+      </div>
+
+      <div class="filtro-pesquisa">
+        <div class="dropdown">
+          <button class="filtro-btn">🔍</button>
+          <div class="dropdown-conteudo">
+            <label><input type="radio" name="filtro" checked> ID Cliente</label>
+            <label><input type="radio" name="filtro"> Cliente</label>
+            <label><input type="radio" name="filtro"> Telefone</label>
+            <label><input type="radio" name="filtro"> CPF</label>
+          </div>
+        </div>
+        <input type="text" placeholder="Pesquisar...">
+      </div>
+    </div>
+
+    <section class="tabela">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Cliente</th>
+            <th>Cliente</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>100001</td>
+            <td>Angela Cristina Souza</td>
+            <td>(11)99999-9129</td>
+            <td>000.000.000-00</td>
+          </tr>
+          <tr>
+            <td>100002</td>
+            <td>Maria Eduarda Ribeiro</td>
+            <td>(11)99349-6139</td>
+            <td>000.000.000-01</td>
+          </tr>
+          <tr>
+            <td>100003</td>
+            <td>Flavio Roberto Santos</td>
+            <td>(11)99119-5149</td>
+            <td>000.000.000-02</td>
+          </tr>
+          <tr>
+            <td>100004</td>
+            <td>Ricardo Fernandes Soares</td>
+            <td>(11)99177-8129</td>
+            <td>000.000.000-03</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantinho do Pet - Cliente</title>
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/produtos.css">
+</head>
+<body>
+
+<div id="header"></div>
+<div id="pageType" data-type="produto"></div>
+
+<script src="/assets/js/header.js"></script>
+
+  <main>
+    <div class="botoes-topo">
+    <a href="produtos.html" class="voltar">⬅</a>
+    <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
+    <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
+    <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
+
+    <div class="filtro-pesquisa">
+      <div class="dropdown">
+        <button class="filtro-btn">🔍</button>
+        <div class="dropdown-conteudo">
+          <label><input type="radio" name="filtro" checked> Código de Barras</label>
+          <label><input type="radio" name="filtro"> Nome</label>
+          <label><input type="radio" name="filtro"> Grupo</label>
+          <label><input type="radio" name="filtro"> Setor</label>
+        </div>
+      </div>
+      <input type="text" placeholder="Pesquisar...">
+    </div>
+  </div>
+
+
+
+    <br>
+
+    <h2>Cadastro de Setores</h2>
+    <section class="tabela">
+      <table>
+        <thead>
+          <tr>
+            <th>Editar</th>
+            <th>Apagar</th>
+            <th>Nome do Setor</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
+            <td>Produto</td>
+          </tr>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
+            <td>Serviço</td>
+          </tr>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
+            <td>Outro</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+    
+</body>
+</html>

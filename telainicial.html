@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantinho do Pet - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/telainicial.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-title">Tela Inicial</span>
+            </div>
+            <nav class="sidebar-nav">
+    <ul id="menu-list">
+    <li class="nav-item active"><a href="#">Agendamento</a></li>
+    
+    <li class="nav-item has-submenu">
+        <a href="#">Cadastro <i class="fas fa-plus"></i></a>
+        <ul class="submenu">
+            <li class="submenu-item"><a href="../cadastro_cliente/clientes.html">Cliente</a></li>
+            <li class="submenu-item"><a href="#">Funcionário</a></li>
+            <li class="submenu-item"><a href="#">Fornecedor</a></li>
+        </ul>
+    </li>
+    
+    <li class="nav-item"><a href="#">Faturamento</a></li>
+    
+    <li class="nav-item has-submenu">
+        <a href="#">Financeiro <i class="fas fa-plus"></i></a>
+        <ul class="submenu">
+            <li class="submenu-item"><a href="#">Contas a receber</a></li>
+            <li class="submenu-item"><a href="#">Contas a pagar</a></li>
+        </ul>
+    </li>
+    
+    <li class="nav-item">
+        <a href="../vendas/vendas.html">Vendas</a>
+    </li>
+
+    <li class="nav-item separator"><hr></li>
+
+    <li class="nav-item">
+        <a href="../produtos/produtos.html">Produtos</a>
+    </li>
+
+    <li class="nav-item"><a href="#">Controle Produtos</a></li>
+    <li class="nav-item"><a href="#">Compras</a></li>
+    <li class="nav-item"><a href="#">Estoque</a></li>
+    <li class="nav-item"><a href="#">Whatsapp</a></li>
+</ul>
+
+</nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="header">
+                <div class="header-logo">Cantinho do Pet</div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Pesquisar...">
+                </div>
+
+                <div class="header-info">
+                    <div class="info-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span id="data-atual"></span>
+                    </div>
+                    <div class="info-link">
+                        <span>AMOR DE PET</span>
+                    </div>
+                    <div class="info-user">
+                        <span>JULIANA.MARTINS</span>
+                    </div>
+                    <div class="info-menu-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </header>
+
+            <section class="dashboard-cards">
+                
+                <div class="card welcome-card">
+                    <div class="welcome-image">
+                        <img src="../assets/img/filhotes.jpg" alt="Dois filhotes de cachorro" />
+                    </div>
+                    <div class="welcome-text">
+                        <h1>Bem - Vinda de volta Juliana!</h1>
+                        <p>O Cantinho Pet oferece o melhor para a gestão do Petshop, com funcionalidades para ajudar nos desafios do dia a dia.</p>
+                        <p class="suggestions">Para sugestões de melhorias clique <a href="#">aqui</a>.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-cards">
+                    
+                    <div class="card training-card">
+                        <span class="component-label">Component</span>
+                        <div class="video-placeholder">
+                            <i class="far fa-play-circle video-icon"></i>
+                            <img src="../assets/img/pessoa-computador.webp" alt="Pessoa assistindo vídeo" />
+                        </div>
+                        <p>Acesse nosso conteúdo de treinamento no Youtube!</p>
+                    </div>
+
+                    <div class="card support-card">
+                        <div class="support-image">
+                            <img src="../assets/img/duvida.jpg" alt="Símbolo de interrogação" />
+                        </div>
+                        <p>Alguma dúvida ou problema? Contate nossa equipe!</p>
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+    <script src="../assets/js/telainicial.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+main {
+  padding: 20px;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.voltar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.adicionar {
+  background-color: #b6f0dc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #004d25;
+  transition: 0.3s;
+}
+
+.adicionar:hover {
+  background-color: #a2e0cb;
+}
+
+.outras {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botoes-topo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 15px 20px;
+}
+
+.btn-verde {
+  background-color: #8ad1b6;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-verde:hover {
+  background-color: #7ac4a8;
+}
+
+.btn-branco {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.filtro-pesquisa {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+
+.filtro-pesquisa input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.filtro-btn {
+  background-color: #c7f0e3;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-conteudo {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 35px;
+  background-color: #c3ecff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-conteudo {
+  display: block;
+}
+
+.dropdown-conteudo label {
+  display: block;
+  font-size: 0.9rem;
+  padding: 4px 0;
+}
+
+
+.tabela {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #b6f0dc;
+  color: #004d25;
+  text-align: left;
+  padding: 10px;
+  font-weight: 600;
+  border-bottom: 2px solid #fff;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+.dropdown-acoes {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-acoes .btn-branco {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-acoes {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: #f7fdff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 150px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.menu-acoes a {
+  display: block;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.menu-acoes a:hover {
+  background-color: #e6f7f4;
+}
+
+
+.dropdown-acoes:hover .menu-acoes {
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+  .acoes {
+    flex-wrap: wrap;
+  }
+
+  .pesquisa input {
+    width: 120px;
+  }
+
+  th, td {
+    font-size: 0.85rem;
+  }
+}

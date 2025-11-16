@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/nova_venda.css">
+</head>
+<body>
+
+<div id="header"></div>
+<div id="pageType" data-type="vendas"></div>
+
+<script src="/assets/js/header.js"></script>
+
+<script src="../assets/js/pagamento.js" defer></script>
+
+<div class="top-actions">
+    <a href="vendas.html" class="voltar">⬅</a>
+    <button class="btn-venda" onclick="window.location.href='nova_venda.html'">+ VENDA</button>
+    <button class="btn-outras" onclick="abrirPopupAcoes()">OUTRAS AÇÕES</button>
+    
+
+      <div class="filtro-pesquisa">
+        <div class="dropdown">
+          <button class="filtro-btn">🔍</button>
+          <div class="dropdown-conteudo">
+            <label><input type="radio" name="filtro" checked> ID Cliente</label>
+            <label><input type="radio" name="filtro"> Cliente</label>
+            <label><input type="radio" name="filtro"> Telefone</label>
+            <label><input type="radio" name="filtro"> CPF</label>
+          </div>
+        </div>
+        <input type="text" placeholder="Pesquisar...">
+      </div>
+    </div>
+
+<div class="form-container">
+
+<div class="linha">
+    <label>Orçamento</label>
+    <input type="text" value="" readonly>
+
+    <label>Nome</label>
+    <input type="text" value="">
+
+    <div class="troca-nome">
+        <input type="checkbox">
+        <span>Troca de nome?</span>
+    </div>
+</div>
+
+
+<table class="produtos">
+<thead>
+<tr>
+<th>Código de Barras</th>
+<th>Descrição</th>
+<th>Quantidade</th>
+<th>Preço Unitário</th>
+<th>Desconto</th>
+<th>Preço Final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input type="text" value=""></td>
+<td><input type="text" value=""></td>
+<td><input type="number" value="" min="1"></td>
+<td><input type="number" value="" step=""></td>
+<td><input type="number" value="" step=""></td>
+<td><input type="number" value="" step="" readonly></td> </tr>
+</tbody>
+</table>
+
+<button class="btn-pagamento" onclick="abrirPagamento()">+ Pagamento</button>
+
+<div class="total">Valor Total: <strong>R$</strong></div>
+
+<div class="bottom-actions">
+    <button class="cancelar">CANCELAR</button>
+    <button class="salvar">CONCLUIR</button>
+</div>
+
+</div>
+
+
+<div id="popupPagamento" class="popup">
+    <div class="popup-content">
+
+        <h2>Pagamento</h2>
+
+        <label>Forma Pagamento</label>
+        <select>
+            <option>Cartão de Crédito</option>
+            <option>Cartão de Débito</option>
+            <option>Depósito</option>
+        </select>
+
+        <label>Parcelas</label>
+        <input>
+
+        <label>Valor</label>
+        <input>
+
+        <div class="popup-buttons">
+            <button class="btn-red" onclick="fecharPagamento()">Cancelar</button>
+            <button class="btn-green">Salvar</button>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

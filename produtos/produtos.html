@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantinho do Pet - Cliente</title>
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/produtos.css">
+</head>
+<body>
+
+<div id="header"></div>
+<div id="pageType" data-type="produto"></div>
+
+<script src="/assets/js/header.js"></script>
+
+
+  <main>
+  <div class="botoes-topo">
+    <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
+    <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
+    <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
+
+    <div class="dropdown-acoes">
+      <button class="btn-branco">OUTRAS AÇÕES</button>
+      <div class="menu-acoes">
+        <a href="#">Excluir</a>
+        <a href="#">Exportar</a>
+      </div>
+    </div>
+
+    <div class="filtro-pesquisa">
+      <div class="dropdown">
+        <button class="filtro-btn">🔍</button>
+        <div class="dropdown-conteudo">
+          <label><input type="radio" name="filtro" checked> Código de Barras</label>
+          <label><input type="radio" name="filtro"> Nome</label>
+          <label><input type="radio" name="filtro"> Grupo</label>
+          <label><input type="radio" name="filtro"> Setor</label>
+        </div>
+      </div>
+      <input type="text" placeholder="Pesquisar...">
+    </div>
+  </div>
+
+    <section class="tabela">
+      <table>
+        <thead>
+          <tr>
+            <th>Ação</th>
+            <th>Código de Barras</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Tamanho</th>
+            <th>Grupo</th>
+            <th>Setor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td>7896029069547</td>
+            <td>Ração QualitDay Cães Adulto</td>
+            <td>R$160,00</td>
+            <td>25Kg</td>
+            <td>Rações</td>
+            <td>Produto</td>
+          </tr>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td>7896029069548</td>
+            <td>Bravecto AntiPulga</td>
+            <td>R$180,00</td>
+            <td>Un</td>
+            <td>Farmácia</td>
+            <td>Produto</td>
+          </tr>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td>7896029069549</td>
+            <td>Shampoo Cloresten</td>
+            <td>R$95,00</td>
+            <td>500Ml</td>
+            <td>Higiene</td>
+            <td>Produto</td>
+          </tr>
+          <tr>
+            <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
+            <td>7896029069550</td>
+            <td>Osso PetTreats</td>
+            <td>R$15,00</td>
+            <td>Un</td>
+            <td>Petiscco</td>
+            <td>Produto</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>

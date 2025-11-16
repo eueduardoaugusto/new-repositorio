@@ -1,0 +1,119 @@
+:root {
+    --color-green-background: #a9e0c5;
+    --color-text-green: #418967;
+    --color-button-green: #4CAF50;
+    --color-white: #ffffff;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', cursive, sans-serif;
+}
+
+body {
+    background-image: url(../img/login-backgound.png);
+        background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.login-card {
+    background-color: var(--color-white);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+
+.welcome-title {
+    font-size: 28px;
+    color: var(--color-text-green);
+    margin-bottom: -5px; /
+}
+
+.store-name {
+    font-size: 32px;
+    color: var(--color-text-green);
+    margin-bottom: 20px;
+}
+
+.separator {
+    border: none;
+    border-top: 3px solid var(--color-text-green);
+    width: 60%;
+    margin: 10px auto 25px auto;
+}
+
+.instruction {
+    font-size: 14px;
+    color: var(--color-text-green);
+    margin-bottom: 30px;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-label {
+    background-color: var(--color-text-green);
+    color: var(--color-white);
+    padding: 8px 15px;
+    border-radius: 8px 0 0 8px;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #9bd6b7; 
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+
+.login-button {
+    background-color: var(--color-button-green);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #45a049; /
+}
