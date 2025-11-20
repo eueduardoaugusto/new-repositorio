@@ -72,7 +72,6 @@ main {
   cursor: pointer;
 }
 
-
 .filtro-pesquisa {
   margin-left: auto;
   display: flex;
@@ -119,7 +118,6 @@ main {
   padding: 4px 0;
 }
 
-
 .tabela {
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -150,7 +148,6 @@ tr:hover {
   background-color: #f5f5f5;
 }
 
-
 .dropdown-acoes {
   position: relative;
   display: inline-block;
@@ -166,14 +163,14 @@ tr:hover {
 }
 
 .menu-acoes {
+  width: 100%;
   display: none;
   position: absolute;
-  top: 45px;
+  top: 38px;
   left: 0;
   background-color: #f7fdff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  min-width: 150px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   z-index: 10;
 }
@@ -190,11 +187,9 @@ tr:hover {
   background-color: #e6f7f4;
 }
 
-
 .dropdown-acoes:hover .menu-acoes {
   display: block;
 }
-
 
 @media (max-width: 768px) {
   .acoes {
@@ -205,7 +200,8 @@ tr:hover {
     width: 120px;
   }
 
-  th, td {
+  th,
+  td {
     font-size: 0.85rem;
   }
 }

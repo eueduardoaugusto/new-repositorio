@@ -1,4 +1,6 @@
+// Carregar setores ao abrir a página
 carregarOpcoes();
+
 async function carregarOpcoes() {
   try {
     const response = await fetch("http://localhost:3005/api/setor", {
@@ -14,17 +16,14 @@ async function carregarOpcoes() {
 
     const selectSetor = document.getElementById("setor");
 
-    // garante que é um array de setores
     const setores = data.setores || data || [];
 
-    // limpa opções atuais
     selectSetor.innerHTML = '<option value="">Selecione um setor</option>';
 
-    // cria option para cada setor
     setores.forEach((setor) => {
       const option = document.createElement("option");
-      option.value = setor.id; // se quiser o id
-      option.textContent = setor.nome; // se o campo for "nome"
+      option.value = setor.id;
+      option.textContent = setor.nome;
       selectSetor.appendChild(option);
     });
   } catch (err) {
@@ -32,9 +31,12 @@ async function carregarOpcoes() {
   }
 }
 
-carregarOpcoesGrupos();
+// Carregar grupos filtrados
 async function carregarOpcoesGrupos() {
   try {
+    const selectSetor = document.getElementById("setor");
+    const setorSelecionado = selectSetor.value;
+
     const response = await fetch("http://localhost:3005/api/grupos", {
       credentials: "include",
     });
@@ -45,38 +47,47 @@ async function carregarOpcoesGrupos() {
     }
 
     const data = await response.json();
-
-    const selectGrupos = document.getElementById("grupo");
-
-    // garante que é um array de setores
     const grupos = data.grupos || data || [];
 
-    // limpa opções atuais
+    const selectGrupos = document.getElementById("grupo");
     selectGrupos.innerHTML = '<option value="">Selecione um grupo</option>';
 
-    // cria option para cada setor
-    grupos.forEach((grupos) => {
+    // Se não escolheu setor, não mostra grupos
+    if (!setorSelecionado) return;
+
+    // FILTRA os grupos que têm o setor igual ao selecionado
+    const gruposFiltrados = grupos.filter((g) => g.setor == setorSelecionado);
+
+    gruposFiltrados.forEach((g) => {
       const option = document.createElement("option");
-      option.value = grupos.id; // se quiser o id
-      option.textContent = grupos.nome; // se o campo for "nome"
+      option.value = g.id;
+      option.textContent = g.nome;
       selectGrupos.appendChild(option);
     });
   } catch (err) {
     console.error("Erro ao carregar grupos:", err);
   }
 }
+
+// QUANDO O SETOR MUDAR → atualizar grupos
+document
+  .getElementById("setor")
+  .addEventListener("change", carregarOpcoesGrupos);
+
+// Evento de submit do formulário
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("cadastro-produto");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // PEGANDO OS CAMPOS
     const dados = {
       codigo: document.getElementById("codBarras").value,
       nome: document.getElementById("nomeProduto").value,
       tamanho: document.getElementById("tamanho").value,
       preco: document.getElementById("preco").value,
+      setor: document.getElementById("setor").value,
+      grupo: document.getElementById("grupo").value,
     };
 
     try {
@@ -97,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       alert("Produto cadastrado com sucesso!");
-      form.reset(); // limpar os campos
+      form.reset();
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao conectar com a API.");

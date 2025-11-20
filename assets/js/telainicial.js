@@ -20,19 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentItem =
         link.closest(".nav-item") || link.closest(".submenu-item");
 
+      // CLICOU EM SUBITEM (submenu-item)
       if (link.closest(".submenu-item")) {
         e.stopPropagation();
         return;
       }
 
+      // CLICOU EM ITEM COM SUBMENU
       if (currentItem.classList.contains("has-submenu")) {
         e.preventDefault();
 
         const wasOpen = currentItem.classList.contains("open");
 
+        // FECHA TODOS OS OUTROS SUBMENUS
         hasSubmenuItems.forEach((i) => {
-          if (i !== currentItem && i.classList.contains("open")) {
-            i.classList.remove("open");
+          if (i !== currentItem) {
+            i.classList.remove("open", "active");
+
             const icon = i.querySelector("i");
             if (icon) {
               icon.classList.remove("fa-minus");
@@ -41,15 +45,19 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
+        // ABRIR SUBMENU
         if (!wasOpen) {
           currentItem.classList.add("open", "active");
+
           const icon = currentItem.querySelector("i");
           if (icon) {
             icon.classList.remove("fa-plus");
             icon.classList.add("fa-minus");
           }
         } else {
-          currentItem.classList.remove("open");
+          // FECHAR SUBMENU (remove verde!)
+          currentItem.classList.remove("open", "active");
+
           const icon = currentItem.querySelector("i");
           if (icon) {
             icon.classList.remove("fa-minus");
@@ -60,27 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (currentItem.classList.contains("submenu-item")) {
-        currentItem.classList.add("active");
-
-        const parentSubmenu = currentItem.closest(".has-submenu");
-        if (parentSubmenu) {
-          parentSubmenu.classList.add("active", "open");
-
-          const icon = parentSubmenu.querySelector("i");
-          if (icon) {
-            icon.classList.remove("fa-plus");
-            icon.classList.add("fa-minus");
-          }
-        }
-
-        return;
-      }
-
+      // CLICOU EM ITEM NORMAL (sem submenu)
       currentItem.classList.add("active");
 
+      // FECHA TODOS OS SUBMENUS QUANDO CLICA EM ITEM NORMAL
       hasSubmenuItems.forEach((i) => {
-        i.classList.remove("open");
+        i.classList.remove("open", "active");
+
         const icon = i.querySelector("i");
         if (icon) {
           icon.classList.remove("fa-minus");
@@ -89,8 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-
-  document.querySelector(".nav-item:first-child").classList.add("active");
 
   const trainingCard = document.querySelector(".training-card");
   if (trainingCard) {
@@ -106,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 carregarUsuario();
+
 async function carregarUsuario() {
   try {
     const response = await fetch("http://localhost:3005/api/auth/me", {

@@ -15,18 +15,16 @@
 
     <main>
       <div class="botoes-topo">
-        <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
-        <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
-        <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
-
         <div class="dropdown-acoes">
-          <button class="btn-branco">OUTRAS AÇÕES</button>
+          <button class="btn-verde">NOVO CADASTRO</button>
           <div class="menu-acoes">
-            <a href="#">Excluir</a>
-            <a href="#">Exportar</a>
+            <a href="produtos_cadastro.html">Produtos</a>
+            <a href="produtos_setores.html">Setores</a>
+            <a href="produtos_grupos.html">Grupo</a>
           </div>
         </div>
 
+        <button class="btn-branco">EXPORTAR</button>
         <div class="filtro-pesquisa">
           <div class="dropdown">
             <button class="filtro-btn">🔍</button>
@@ -48,82 +46,91 @@
         <table>
           <thead>
             <tr>
-              <th>Ação</th>
               <th>Código de Barras</th>
               <th>Nome</th>
               <th>Preço</th>
               <th>Tamanho</th>
               <th>Grupo</th>
               <th>Setor</th>
+              <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="produtos_cadastro.html" class="btn-verde"
-                  ><img
-                    class="lapiz"
-                    src="../assets/img/editar.png"
-                    alt="Editar"
-                /></a>
-              </td>
-              <td>7896029069547</td>
-              <td>Ração QualitDay Cães Adulto</td>
-              <td>R$160,00</td>
-              <td>25Kg</td>
-              <td>Rações</td>
-              <td>Produto</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="lapiz"
-                  src="../assets/img/editar.png"
-                  alt="Editar"
-                />
-              </td>
-              <td>7896029069548</td>
-              <td>Bravecto AntiPulga</td>
-              <td>R$180,00</td>
-              <td>Un</td>
-              <td>Farmácia</td>
-              <td>Produto</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="lapiz"
-                  src="../assets/img/editar.png"
-                  alt="Editar"
-                />
-              </td>
-              <td>7896029069549</td>
-              <td>Shampoo Cloresten</td>
-              <td>R$95,00</td>
-              <td>500Ml</td>
-              <td>Higiene</td>
-              <td>Produto</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  class="lapiz"
-                  src="../assets/img/editar.png"
-                  alt="Editar"
-                />
-              </td>
-              <td>7896029069550</td>
-              <td>Osso PetTreats</td>
-              <td>R$15,00</td>
-              <td>Un</td>
-              <td>Petiscco</td>
-              <td>Produto</td>
-            </tr>
-            <tr></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </section>
     </main>
+
+    <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+    <div id="modal-excluir" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Confirmar Exclusão</h2>
+        <p>Tem certeza que deseja excluir este produto?</p>
+
+        <form id="form-excluir">
+          <input type="hidden" id="id-excluir" name="id" />
+
+          <div class="modal-buttons">
+            <button type="button" class="btn-cancelar" id="cancelar-modal">
+              Cancelar
+            </button>
+            <button type="submit" class="btn-excluir">Excluir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- MODAL DE EDIÇÃO -->
+    <div id="modal-editar" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Editar Produto</h2>
+
+        <form id="form-editar">
+          <input type="hidden" id="edit-id" />
+
+          <div class="form-group">
+            <label for="edit-codigo">Código</label>
+            <input type="text" id="edit-codigo" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-nome">Nome</label>
+            <input type="text" id="edit-nome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-preco">Preço</label>
+            <input type="text" id="edit-preco" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-tamanho">Tamanho</label>
+            <input type="text" id="edit-tamanho" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-grupo">Grupo</label>
+            <input type="text" id="edit-grupo" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-setor">Setor</label>
+            <input type="text" id="edit-setor" />
+          </div>
+
+          <div class="modal-buttons">
+            <button type="button" class="btn-cancelar" id="cancelar-edicao">
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="btn-salvar"
+              style="background: #4caf50"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <script src="../assets/js/produtos.js"></script>
   </body>
