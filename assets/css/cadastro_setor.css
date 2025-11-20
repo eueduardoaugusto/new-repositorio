@@ -1,0 +1,153 @@
+main {
+  padding: 20px;
+}
+
+.botoes-topo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 15px 20px;
+}
+
+.btn-verde {
+  background-color: #8ad1b6;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-verde:hover {
+  background-color: #7ac4a8;
+}
+
+.filtro-pesquisa {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.filtro-btn {
+  background-color: #c7f0e3;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-conteudo {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 35px;
+  background-color: #c3ecff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-conteudo {
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 30px;
+  align-items: flex-start;
+}
+.voltar {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #000;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-enviar{
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.filtro-pesquisa input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+/* FORMULÁRIO À ESQUERDA */
+.container form {
+  width: 25%;
+  background-color: #b6f0dc;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+form div{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+/* DIV DA TABELA À DIREITA */
+.container > div {
+  width: 70%;
+}
+.container input{
+  width: 50%;
+}
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+/* Ajuste visual da tabela */
+.tabela {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+table th {
+  background-color: #c7f0e3;
+  font-weight: bold;
+}
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container form,
+  .container > div {
+    width: 100%;
+  }
+}

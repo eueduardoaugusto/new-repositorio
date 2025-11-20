@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cantinho do Pet - Cliente</title>
   <link rel="stylesheet" href="../assets/css/reset.css" />
-  <link rel="stylesheet" href="../assets/css/produtos.css">
+  <link rel="stylesheet" href="../assets/css/cadastro_setor.css">
 </head>
 <body>
 
   <div id="header"></div>
-  <div id="pageType" data-type="cliente"></div>
+  <div id="pageType" data-type="produto"></div>
 
   <script src="/assets/js/header.js"></script>
 
@@ -37,48 +37,82 @@
 
     <br>
 
-    <h2>Cadastro de Grupo</h2>
-    <section class="tabela">
-      <table>
-        <thead>
-          <tr>
-            <th>Editar</th>
-            <th>Apagar</th>
-            <th>Nome do Grupo</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar" onclick="abrirModalSetores()"></td>
-              <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
-              <td>Ração</td>
-          </tr>
-            <tr>
-                <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
-                <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
-                <td>Farmacia</td>
-            </tr>
-            <tr>
-                <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
-                <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
-                <td>Higienie</td>
-            </tr>
-            <tr>
-                <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
-                <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
-                <td>Petisco</td>
-            </tr>
-            <tr>
-                <td><img class="lapiz" src="../assets/img/editar.png" alt="Editar"></td>
-                <td><img class="lapiz" src="../assets/img/apagar.png" alt="Apagar"></td>
-                <td>Serviço</td>
-            </tr>
-        </tbody>
-      </table>
-    </section>
+    <div class="container">
+        <form id="cadastro-grupos">
+          <p>Cadastrar Grupo</p>
+
+          
+          <div>
+            <label for="nome">Nome Grupo</label>
+            <input type="text" id="nome" />
+          </div>
+          <div>
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao"/>
+          </div>
+          <div>
+            <label for="setor">Vincular ao setor</label>
+            <select id="setor">
+              <option>Escolha um setor</option>
+              <option>Produtos</option>
+              <option>Serviços</option>
+              <option>Outros</option>
+            </select>
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="1">Ativo</option>
+              <option value="0">Inativo</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-enviar">Cadastrar</button>
+        </form>
+
+        <div>
+          <h2>Grupos Cadastrados</h2>
+          <section class="tabela">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome do Grupo</th>
+                  <th>Descrição</th>
+                  <th>Setor</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0001</td>
+                  <td>Rações</td>
+                  <td>Linha Seca</td>
+                  <td>Produto</td>
+                  <td>Ativo</td>
+                </tr>
+                <tr>
+                  <td>0002</td>
+                  <td>Petisco</td>
+                  <td>Linha Seca</td>
+                  <td>Produto</td>
+                  <td>Ativo</td>
+                </tr>
+                <tr>
+                  <td>0003</td>
+                  <td>Higiene</td>
+                  <td>Banho</td>
+                  <td>Serviço</td>
+                  <td>Inativo</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
 
     
 </div>
+<script src="../assets/js/grupos.js"></script>
 </body>
 </html>

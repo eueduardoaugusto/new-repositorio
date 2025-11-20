@@ -1,91 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cantinho do Pet - Cliente</title>
-  <link rel="stylesheet" href="../assets/css/reset.css" />
-  <link rel="stylesheet" href="../assets/css/produtos.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cantinho do Pet - Cliente</title>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/produtos.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="pageType" data-type="produto"></div>
 
-  <div id="header"></div>
-  <div id="pageType" data-type="cliente"></div>
+    <script src="/assets/js/header.js"></script>
 
-  <script src="/assets/js/header.js"></script>
+    <main>
+      <div class="botoes-topo">
+        <a href="produtos.html" class="voltar">⬅</a>
+        <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
+        <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
+        <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
 
-  <main>
-    <div class="botoes-topo">
-    <a href="produtos.html" class="voltar">⬅</a>
-    <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
-    <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
-    <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
-
-    <div class="filtro-pesquisa">
-      <div class="dropdown">
-        <button class="filtro-btn">🔍</button>
-        <div class="dropdown-conteudo">
-          <label><input type="radio" name="filtro" checked> Código de Barras</label>
-          <label><input type="radio" name="filtro"> Nome</label>
-          <label><input type="radio" name="filtro"> Grupo</label>
-          <label><input type="radio" name="filtro"> Setor</label>
+        <div class="filtro-pesquisa">
+          <div class="dropdown">
+            <button class="filtro-btn">🔍</button>
+            <div class="dropdown-conteudo">
+              <label
+                ><input type="radio" name="filtro" checked /> Código de
+                Barras</label
+              >
+              <label><input type="radio" name="filtro" /> Nome</label>
+              <label><input type="radio" name="filtro" /> Grupo</label>
+              <label><input type="radio" name="filtro" /> Setor</label>
+            </div>
+          </div>
+          <input type="text" placeholder="Pesquisar..." />
         </div>
       </div>
-      <input type="text" placeholder="Pesquisar...">
-    </div>
-  </div>
-   
 
-    <form id="cadastro-produto">
-    
-        <br>
+      <form id="cadastro-produto">
+        <br />
         <h2>CADASTRO NOVO PRODUTO</h2>
-        <br>
-    
+        <br />
+
         <div class="linha_cheia">
-        <div class="form-group full-width">
+          <div class="form-group full-width">
             <label for="codBarras">Código Barras</label>
-            <input type="text" id="codBarras" value="">
+            <input type="text" id="codBarras" value="" />
+          </div>
         </div>
-    </div>
-        
-    <br>
-    
-    
-    <div class="linha_cheia">
-        <div class="form-group full-width">
+
+        <br />
+
+        <div class="linha_cheia">
+          <div class="form-group full-width">
             <label for="nomeProduto">Nome Produto</label>
-            <input type="text" id="nomeProduto" value="">
+            <input type="text" id="nomeProduto" value="" />
+          </div>
         </div>
-    </div>
-        
-    <br>
-    
-    <div class="field-row split-fields">
-        <div class="form-group half-width">
+
+        <br />
+
+        <div class="field-row split-fields">
+          <div class="form-group half-width">
             <label for="tamanho">Tamanho</label>
-            <input type="text" id="tamanho" value="">
-        </div>
+            <input type="text" id="tamanho" value="" />
+          </div>
 
-        <br>
+          <br />
 
-        <div class="form-group half-width">
+          <div class="form-group half-width">
             <label for="preco">Preço</label>
-            <input type="text" id="preco" value="">
+            <input type="text" id="preco" value="" />
+          </div>
         </div>
-    </div>
-        
-    <br>
-    
-    
-    <div class="button-group">
-        <button type="button" class="btn cancel">CANCELAR</button>
-        <button type="submit" class="btn cadastrar">CADASTRAR</button>
-    </div>
-</form>
-  </main>
 
-<script src="../assets/js/produtos_cadastro.js"></script>
+        <br />
 
-</body>
+        <div class="field-row split-fields">
+          <div class="form-group half-width">
+            <label for="setor">Setor</label>
+            <select id="setor">
+              <option>Escolha um setor</option>
+              <option>Produtos</option>
+              <option>Serviços</option>
+              <option>Outros</option>
+            </select>
+          </div>
+
+          <br />
+
+          <div class="form-group half-width">
+            <label for="grupo">Grupo</label>
+            <select id="grupo">
+              <option>Escolha um grupo</option>
+              <option>Produtos</option>
+              <option>Serviços</option>
+              <option>Outros</option>
+            </select>
+          </div>
+        </div>
+        <br />
+
+        <div class="button-group">
+          <button type="button" class="btn cancel">
+            <a href="produtos.html" style="text-decoration: none; color: white"
+              >VOLTAR</a
+            >
+          </button>
+          <button type="reset" class="btn reset">LIMPAR</button>
+          <button type="submit" class="btn cadastrar">CADASTRAR</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="../assets/js/produtos_cadastro.js"></script>
+  </body>
 </html>

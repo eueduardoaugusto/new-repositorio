@@ -32,55 +32,22 @@ async function carregarOpcoes() {
   }
 }
 
-carregarOpcoesGrupos();
-async function carregarOpcoesGrupos() {
-  try {
-    const response = await fetch("http://localhost:3005/api/grupos", {
-      credentials: "include",
-    });
-
-    if (!response.ok) {
-      console.warn("Usuário não autenticado.");
-      return;
-    }
-
-    const data = await response.json();
-
-    const selectGrupos = document.getElementById("grupo");
-
-    // garante que é um array de setores
-    const grupos = data.grupos || data || [];
-
-    // limpa opções atuais
-    selectGrupos.innerHTML = '<option value="">Selecione um grupo</option>';
-
-    // cria option para cada setor
-    grupos.forEach((grupos) => {
-      const option = document.createElement("option");
-      option.value = grupos.id; // se quiser o id
-      option.textContent = grupos.nome; // se o campo for "nome"
-      selectGrupos.appendChild(option);
-    });
-  } catch (err) {
-    console.error("Erro ao carregar grupos:", err);
-  }
-}
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("cadastro-produto");
+  const form = document.getElementById("cadastro-grupos");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // PEGANDO OS CAMPOS
     const dados = {
-      codigo: document.getElementById("codBarras").value,
-      nome: document.getElementById("nomeProduto").value,
-      tamanho: document.getElementById("tamanho").value,
-      preco: document.getElementById("preco").value,
+      nome: document.getElementById("nome").value,
+      descricao: document.getElementById("descricao").value,
+      setor: document.getElementById("setor").value,
+      status: document.getElementById("status").value,
     };
 
     try {
-      const response = await fetch("http://localhost:3005/api/produtos", {
+      const response = await fetch("http://localhost:3005/api/grupos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,11 +63,45 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      alert("Produto cadastrado com sucesso!");
+      alert("Grupos cadastrado com sucesso!");
       form.reset(); // limpar os campos
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao conectar com a API.");
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const tabelaBody = document.querySelector("tbody");
+
+  try {
+    const response = await fetch("http://localhost:3005/api/grupos", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao carregar grupos");
+    }
+
+    const grupos = await response.json();
+
+    tabelaBody.innerHTML = ""; // limpa a tabela inicial
+
+    grupos.forEach((p) => {
+      const tr = document.createElement("tr");
+
+      tr.innerHTML = `
+        <td>${p.id}</td>
+        <td>${p.nome}</td>
+        <td>${p.setor}</td>
+        <td>${p.status}</td>
+      `;
+
+      tabelaBody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar grupos:", error);
+  }
 });

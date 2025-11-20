@@ -1,15 +1,15 @@
 // Carrega o header
 fetch("/header.html")
-  .then(response => response.text())
-  .then(data => {
+  .then((response) => response.text())
+  .then((data) => {
     document.getElementById("header").innerHTML = data;
 
     carregarCSS("/assets/css/header.css");
     atualizarData();
     configurarMenu();
+    carregarUsuario();
     atualizarTituloDinamico(); // <-- CHAMADA DA FUNÇÃO
   });
-
 
 // Carrega CSS dinamicamente
 function carregarCSS(caminho) {
@@ -19,7 +19,6 @@ function carregarCSS(caminho) {
   document.head.appendChild(link);
 }
 
-
 // Atualiza a data automaticamente
 function atualizarData() {
   const hoje = new Date();
@@ -27,9 +26,34 @@ function atualizarData() {
   const mes = (hoje.getMonth() + 1).toString().padStart(2, "0");
   const ano = hoje.getFullYear();
 
-  document.getElementById("dateDisplay").textContent = `📅 ${dia}/${mes}/${ano}`;
+  document.getElementById(
+    "dateDisplay"
+  ).textContent = `📅 ${dia}/${mes}/${ano}`;
 }
 
+async function carregarUsuario() {
+  try {
+    const response = await fetch("http://localhost:3005/api/auth/me", {
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      console.warn("Usuário não autenticado.");
+      return;
+    }
+
+    const data = await response.json();
+
+    const nomeUsuario = document.getElementById("usuarioNome");
+
+    if (nomeUsuario) {
+      const nome = data.user?.name;
+      nomeUsuario.textContent = nome;
+    }
+  } catch (err) {
+    console.error("Erro ao carregar usuário:", err);
+  }
+}
 
 // Atualiza o título dinamicamente
 function atualizarTituloDinamico() {
@@ -43,7 +67,7 @@ function atualizarTituloDinamico() {
     vendas: "VENDAS",
     cliente: "CADASTRO DE CLIENTE",
     produto: "CADASTRO DE PRODUTO",
-    inicio: "PÁGINA INICIAL"
+    inicio: "PÁGINA INICIAL",
   };
 
   tituloEl.textContent = titulos[tipo] || "SISTEMA CANTINHO DO PET";
@@ -70,4 +94,3 @@ function configurarMenu() {
     window.close();
   });
 }
-
