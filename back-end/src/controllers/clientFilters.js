@@ -1,4 +1,4 @@
-import Cliente from "../models/client.js";
+import { Client as Cliente, Pet } from "../models/index.js";
 import { Op } from "sequelize";
 
 // Filtrar clientes por nome, telefone, cpf
@@ -11,9 +11,17 @@ export const filtrarCliente = async (req, res) => {
     if (nome) where.nome = { [Op.like]: `%${nome}%` };
     if (telefone) where.telefone = { [Op.like]: `%${telefone}%` };
     if (cpf) where.cpf = { [Op.like]: `%${cpf}%` };
-    
+
     // Busca no banco de dados
-    const clientes = await Cliente.findAll({ where });
+    const clientes = await Cliente.findAll({
+      where,
+      include: [
+        {
+          model: Pet,
+          required: true,
+        },
+      ],
+    });
 
     if (clientes.length === 0) {
       return res.status(404).json({ mensagem: "Nenhum cliente encontrado" });

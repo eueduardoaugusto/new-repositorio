@@ -11,7 +11,7 @@ export const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// configuração CORS CORRETA
+// configuração dos cors (É isso que irá definir a conexão com o Front-End)
 app.use(
   cors({
     origin: [
@@ -19,12 +19,11 @@ app.use(
       "http://127.0.0.1:5500", // Live Server
       "http://localhost:5500", // Live Server (versão localhost)
     ],
-    credentials: true, // permite cookies/sessão
-  })
+    credentials: true,
+  }),
 );
 
-// configuração para manipular cookies
+// configuração para manipular melhor os cookies
 app.use(cookieParser());
 
-// rotas
 app.use("/api", router);

@@ -1,11 +1,11 @@
 import express from "express";
 import {
   listarSetor,
+  atualizarSetor,
   buscarSetor,
   criarSetor,
-  atualizarSetor,
   deletarSetor,
-} from "../controllers/sectorControllers.js";
+} from "../controllers/setorController.js";
 import authGuard from "../middleware/authGuard.js";
 
 const router = express.Router();

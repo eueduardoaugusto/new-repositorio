@@ -1,22 +1,18 @@
-// middlewares/authGuard.js
 import { decrypt } from "../lib/session.js";
 
 export default async function authGuard(req, res, next) {
   try {
     const session = req.cookies.session;
-
     if (!session) {
       return res.status(401).json({ errors: ["Usuário não autenticado."] });
     }
 
     const payload = await decrypt(session);
-
-    if (!payload || !payload.userId) {
+    if (!payload) {
       return res.status(401).json({ errors: ["Sessão inválida ou expirada"] });
     }
 
-    // Ajuste importante
-    req.user = { id: payload.userId };
+    req.user = payload;
 
     next();
   } catch (error) {

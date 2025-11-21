@@ -1,4 +1,3 @@
-// lib/session.js
 import { SignJWT, jwtVerify } from "jose";
 
 const secretKey = new TextEncoder().encode(process.env.SESSION_SECRET);
@@ -17,7 +16,6 @@ export async function decrypt(session = "") {
     const { payload } = await jwtVerify(session, secretKey, {
       algorithms: [alg],
     });
-
     return payload;
   } catch (error) {
     console.log("Failed to verify session:", error.message);
@@ -25,15 +23,13 @@ export async function decrypt(session = "") {
   }
 }
 
-export async function createSession(res, userId) {
+export async function createSession(res, userId, role) {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-
-  const session = await encrypt({ userId, expiresAt });
-
+  const session = await encrypt({ userId, role, expiresAt });
   return res.cookie("session", session, {
     httpOnly: true,
     secure: true,
-    sameSite: "Lax",
     expires: expiresAt,
+    sameSite: "Lax",
   });
 }

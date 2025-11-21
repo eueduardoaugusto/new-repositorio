@@ -1,4 +1,4 @@
-import Grupos from "../models/groups.js";
+import { Grupos } from "../models/index.js";
 
 export const listarGrupos = async (req, res) => {
   try {

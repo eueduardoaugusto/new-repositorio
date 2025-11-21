@@ -1,9 +1,17 @@
-import Cliente from "../models/client.js";
+import { Client as Cliente, Pet } from "../models/index.js";
+import { sequelize } from "../config/database.js";
 
 // Listar todos os clientes cadastrados
 export const listarClientes = async (req, res) => {
   try {
-    const clientes = await Cliente.findAll();
+    const clientes = await Cliente.findAll({
+      include: [
+        {
+          model: Pet,
+          required: true,
+        },
+      ],
+    });
     res.status(200).json(clientes);
   } catch (error) {
     console.error(error);
@@ -14,7 +22,14 @@ export const listarClientes = async (req, res) => {
 // Buscar cliente por ID
 export const buscarCliente = async (req, res) => {
   try {
-    const cliente = await Cliente.findByPk(req.params.id);
+    const cliente = await Cliente.findByPk(req.params.id, {
+      include: [
+        {
+          model: Pet,
+          required: true,
+        },
+      ],
+    });
     if (!cliente) {
       return res.status(404).json({ mensagem: "Cliente não encontrado" });
     }
@@ -27,10 +42,48 @@ export const buscarCliente = async (req, res) => {
 
 // Criar cliente
 export const criarCliente = async (req, res) => {
+  const data = req.body;
+  const t = await sequelize.transaction();
+
   try {
-    const novoCliente = await Cliente.create(req.body);
-    res.status(201).json(novoCliente);
+    const novoCliente = await Cliente.create(
+      {
+        nome: data.nome,
+        cpf: data.cpf,
+        cep: data.cep,
+        logadouro: data.logadouro,
+        endereco: data.endereco,
+        numero: data.numero,
+        complemento: data.complemento,
+        cidade: data.cidade,
+        estado: data.estado,
+        email: data.email,
+        telefone: data.telefone,
+      },
+      { transaction: t },
+    );
+
+    if (data.nome_pet) {
+      const novoPet = await Pet.create(
+        {
+          client_id: novoCliente.id_cliente,
+          pet_name: req.body.nome_pet,
+          pet_specie: req.body.especie,
+          pet_race: req.body.raca,
+          pet_age: req.body.idade,
+        },
+        { transaction: t },
+      );
+    }
+
+    await t.commit();
+
+    return res.json({
+      message: "Cliente cadastrado com sucesso!",
+      novoCliente,
+    });
   } catch (error) {
+    await t.rollback();
     console.error(error);
     res.status(500).json({ erro: "Erro ao cadastrar cliente" });
   }

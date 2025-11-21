@@ -4,6 +4,11 @@ import { DataTypes } from "sequelize";
 const Cliente = sequelize.define(
   "Cliente",
   {
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     nome: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -51,27 +56,11 @@ const Cliente = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    pet_nome: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    pet_especie: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    pet_raca: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    pet_idade: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
   },
   {
-    timestamps: true,
-    tableName: "cliente", // Nome da tabela no banco
-  }
+    timestamps: false,
+    tableName: "clientes", // Nome da tabela no banco
+  },
 );
 
 export default Cliente;

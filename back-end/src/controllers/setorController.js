@@ -1,4 +1,4 @@
-import Setor from "../models/sector.js";
+import { Setor } from "../models/index.js";
 
 export const listarSetor = async (req, res) => {
   try {

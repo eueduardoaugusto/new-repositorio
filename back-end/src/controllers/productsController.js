@@ -1,4 +1,4 @@
-import Produto from "../models/products.js";
+import { Product as Produto } from "../models/index.js";
 
 // Listar todos os produtos cadastrados
 export const listarProduto = async (req, res) => {
