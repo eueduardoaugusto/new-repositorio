@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td>${p.id_cliente}</td>
         <td>${p.nome}</td>
         <td>${p.telefone}</td>
-        <td>${p.Pets[0].pet_name}</td>
-        <td>${p.Pets[0].pet_specie}</td>
-        <td>${p.Pets[0].pet_race}</td>
-        <td>${p.Pets[0].pet_age}</td>
+        <td>${p.Pets ? p.Pets[0].pet_name : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_specie : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_race : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_age : ""}</td>
       `;
 
       tabelaBody.appendChild(tr);

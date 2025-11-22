@@ -26,10 +26,16 @@ async function seedClients() {
   }
 }
 
-async function seedPets() {
+async function seedPets(data) {
   try {
     const insertedPets = await Promise.all(
-      pets.map(async (pet) => await Pet.create(pet)),
+      pets.map(
+        async (pet, i) =>
+          await Pet.create({
+            ...pet,
+            client_id: data[i].id_cliente,
+          }),
+      ),
     );
 
     console.log(`Seeded ${insertedPets.length} pets`);
@@ -43,10 +49,16 @@ async function seedPets() {
   }
 }
 
-async function seedProducts() {
+async function seedProducts(data) {
   try {
     const insertedProducts = await Promise.all(
-      products.map(async (product) => await Product.create(product)),
+      products.map(
+        async (product, i) =>
+          await Product.create({
+            ...product,
+            id_fornecedor: data[i].id_supplier,
+          }),
+      ),
     );
 
     console.log(`Seeded ${insertedProducts.length} products`);
@@ -103,10 +115,14 @@ async function seedUsers() {
 
 async function main() {
   await seedUsers();
-  await seedSupplier();
-  await seedProducts();
-  await seedClients();
-  await seedPets();
+
+  const supplierResult = await seedSupplier();
+  const suppliers = supplierResult.suppliers;
+  await seedProducts(suppliers);
+
+  const clientsResults = await seedClients();
+  const clients = clientsResults.clients;
+  await seedPets(clients);
 }
 
 main()

@@ -67,10 +67,10 @@ export const criarCliente = async (req, res) => {
       const novoPet = await Pet.create(
         {
           client_id: novoCliente.id_cliente,
-          pet_name: req.body.nome_pet,
-          pet_specie: req.body.especie,
-          pet_race: req.body.raca,
-          pet_age: req.body.idade,
+          pet_name: req.body.pet_nome,
+          pet_specie: req.body.pet_especie,
+          pet_race: req.body.pet_raca,
+          pet_age: req.body.pet_idade,
         },
         { transaction: t },
       );
