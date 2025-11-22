@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ================================
   async function carregarProdutos() {
     try {
-      const response = await fetch("http://localhost:3005/api/produtos", {
+      const response = await fetch("http://localhost:8080/api/produtos", {
         method: "GET",
         credentials: "include",
       });
