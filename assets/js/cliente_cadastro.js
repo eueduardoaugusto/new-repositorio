@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // PEGANDO OS CAMPOS
     const dadosClientes = {
       nome: document.getElementById("nome").value,
-      cpf: Number(document.getElementById("cpf").value),
+      cpf: document.getElementById("cpf").value,
       cep: document.getElementById("cep").value,
       logradouro: document.getElementById("logradouro").value,
       endereco: document.getElementById("endereco").value,
@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
+    console.log({
+      ...dadosClientes,
+      pet_nome,
+      pet_especie,
+      pet_raca,
+      pet_idade,
+    });
+
     try {
       const response = await fetch("http://localhost:8080/api/clientes", {
         method: "POST",
@@ -47,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
           pet_especie,
           pet_idade,
           pet_raca,
+          logadouro: dadosClientes.logradouro,
           ...dadosClientes,
         }),
         credentials: "include",

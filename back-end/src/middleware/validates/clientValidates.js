@@ -60,17 +60,22 @@ const registerClientValidate = () => {
     // 🐾 VALIDAÇÃO CONDICIONAL DO PET
     body().custom((value) => {
       const hasAnyPetField =
-        value.nome_pet || value.especie || value.raca || value.idade;
+        value.pet_nome ||
+        value.pet_especie ||
+        value.pet_raca ||
+        value.pet_idade;
 
       const hasAllPetFields =
-        value.nome_pet && value.especie && value.raca && value.idade;
+        value.pet_nome &&
+        value.pet_especie &&
+        value.pet_raca &&
+        value.pet_idade;
 
       if (hasAnyPetField && !hasAllPetFields) {
         throw new Error(
-          "Se qualquer campo de pet for informado, todos (nome_pet, especie, raca, idade) são obrigatórios.",
+          "Se qualquer campo de pet for informado, todos (pet_nome, pet_especie, pet_raca, pet_idade) são obrigatórios.",
         );
       }
-
       return true;
     }),
   ];

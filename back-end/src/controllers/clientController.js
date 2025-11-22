@@ -63,8 +63,8 @@ export const criarCliente = async (req, res) => {
       { transaction: t },
     );
 
-    if (data.nome_pet) {
-      const novoPet = await Pet.create(
+    if (data.pet_nome) {
+      await Pet.create(
         {
           client_id: novoCliente.id_cliente,
           pet_name: req.body.pet_nome,
