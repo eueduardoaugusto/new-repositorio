@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tabelaBody = document.querySelector("tbody");
 
   try {
-    const response = await fetch("http://localhost:3005/api/clientes", {
+    const response = await fetch("http://localhost:8080/api/clientes", {
       method: "GET",
       credentials: "include",
     });
@@ -19,13 +19,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
-        <td>${p.id}</td>
+        <td>${p.id_cliente}</td>
         <td>${p.nome}</td>
         <td>${p.telefone}</td>
-        <td>${p.pet_nome}</td>
-        <td>${p.pet_especie}</td>
-        <td>${p.pet_raca}</td>
-        <td>${p.pet_idade}</td>
+        <td>${p.Pets[0].pet_name}</td>
+        <td>${p.Pets[0].pet_specie}</td>
+        <td>${p.Pets[0].pet_race}</td>
+        <td>${p.Pets[0].pet_age}</td>
       `;
 
       tabelaBody.appendChild(tr);
