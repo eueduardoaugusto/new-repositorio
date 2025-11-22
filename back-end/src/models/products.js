@@ -30,7 +30,11 @@ const Produto = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    id_fornecedor: { type: DataTypes.INTEGER, allowNull: false },
+    id_fornecedor: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_fornecedor",
+    },
     quantidade: { type: DataTypes.INTEGER, field: "quantidade_estoque" },
     preco: {
       type: DataTypes.DECIMAL(10, 2),

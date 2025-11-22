@@ -26,7 +26,7 @@ User.hasMany(Sale, { foreignKey: "user_id" });
 Client.hasMany(Pet, { foreignKey: "client_id" });
 Pet.belongsTo(Client, { foreignKey: "client_id" });
 
-Supplier.hasMany(Product, { foreignKey: "id_fornecedor" });
 Product.belongsTo(Supplier, { foreignKey: "id_fornecedor" });
+Supplier.hasMany(Product, { foreignKey: "id_fornecedor" });
 
 export { Client, Grupos, ItemSold, Sale, Setor, Supplier, Pet, Product, User };

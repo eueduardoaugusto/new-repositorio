@@ -4,7 +4,7 @@ import { sequelize } from "../config/database.js";
 const Supplier = sequelize.define(
   "Supplier",
   {
-    id: {
+    id_supplier: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

@@ -63,7 +63,7 @@ const clients = [
 
 const pets = [
   {
-    client_id: 9,
+    client_id: 1,
     pet_name: "Thor",
     pet_specie: "Cachorro",
     pet_race: "Labrador",
@@ -71,7 +71,7 @@ const pets = [
     observation: "Muito amigável e agitado.",
   },
   {
-    client_id: 10,
+    client_id: 2,
     pet_name: "Mimi",
     pet_specie: "Gato",
     pet_race: "Siamês",
@@ -79,7 +79,7 @@ const pets = [
     observation: "Gosta de ficar no colo.",
   },
   {
-    client_id: 11,
+    client_id: 3,
     pet_name: "Bob",
     pet_specie: "Cachorro",
     pet_race: "Vira-lata",

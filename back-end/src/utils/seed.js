@@ -102,11 +102,11 @@ async function seedUsers() {
 }
 
 async function main() {
-  await seedClients();
-  await seedProducts();
-  await seedPets();
-  await seedSupplier();
   await seedUsers();
+  await seedSupplier();
+  await seedProducts();
+  await seedClients();
+  await seedPets();
 }
 
 main()
