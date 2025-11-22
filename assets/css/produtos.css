@@ -481,15 +481,6 @@ tr:hover {
   z-index: 9999;
 }
 
-.modal-content {
-  background: white;
-  padding: 25px;
-  width: 350px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.2s ease;
-}
-
 .modal-buttons {
   margin-top: 20px;
   display: flex;
@@ -535,6 +526,16 @@ td {
   text-align: center;
   padding: 10px 20px;
 }
+.modal-content-excluir,
+.modal-content-editar {
+  background: white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

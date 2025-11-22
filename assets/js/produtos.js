@@ -46,15 +46,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td>${p.grupo || "-"}</td>
           <td>${p.setor || "-"}</td>
           <td>
-              <span class="btn-atualizar" data-id="${p.id}">Atualizar</span>
-              <span class="btn-excluir" data-id="${p.id}">Excluir</span>
+            <span class="btn-atualizar" data-id="${p.id}">Atualizar</span>
+            <span class="btn-excluir" data-id="${p.id}">Excluir</span>
           </td>
         `;
 
         tabelaBody.appendChild(tr);
       });
-
-      ativarEventosAcoes();
     } catch (error) {
       console.error("Erro ao carregar produtos:", error);
     }
@@ -63,59 +61,68 @@ document.addEventListener("DOMContentLoaded", async () => {
   await carregarProdutos();
 
   // ================================
-  // 2. EVENTOS EDITAR / EXCLUIR
+  // 2. DELEGAÇÃO DE EVENTOS (EDITAR / EXCLUIR)
   // ================================
-  function ativarEventosAcoes() {
-    // BOTÃO EDITAR
-    document.querySelectorAll(".btn-atualizar").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const id = btn.dataset.id;
+  tabelaBody.addEventListener("click", async (e) => {
+    const btn = e.target;
 
-        const resp = await fetch(`http://localhost:3005/api/produtos/${id}`, {
-          credentials: "include",
-        });
+    // EDITAR =====================================
+    if (btn.classList.contains("btn-atualizar")) {
+      const id = btn.dataset.id;
 
-        const dados = await resp.json();
+      if (!id) {
+        console.error("ERRO: ID undefined no botão de edição");
+        return;
+      }
 
-        // Preencher modal
-        editId.value = dados.id;
-        editCodigo.value = dados.codigo;
-        editNome.value = dados.nome;
-        editTamanho.value = dados.tamanho;
-        editSetor.value = dados.setor || "";
-        editGrupo.value = dados.grupo || "";
-        editPreco.value = dados.preco;
-
-        modalEditar.style.display = "flex";
+      const resp = await fetch(`http://localhost:3005/api/produtos/${id}`, {
+        credentials: "include",
       });
-    });
 
-    // BOTÃO EXCLUIR
-    document.querySelectorAll(".btn-excluir").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.dataset.id;
-        inputIdExcluir.value = id;
-        modalExcluir.style.display = "flex";
-      });
-    });
-  }
+      const dados = await resp.json();
+
+      editId.value = dados.id;
+      editCodigo.value = dados.codigo;
+      editNome.value = dados.nome;
+      editTamanho.value = dados.tamanho;
+      editSetor.value = dados.setor || "";
+      editGrupo.value = dados.grupo || "";
+      editPreco.value = dados.preco;
+
+      modalEditar.style.display = "flex";
+    }
+
+    // EXCLUIR =====================================
+    if (btn.classList.contains("btn-excluir")) {
+      const id = btn.dataset.id;
+
+      if (!id) {
+        console.error("ERRO: ID undefined no botão de exclusão");
+        return;
+      }
+
+      inputIdExcluir.value = id;
+      modalExcluir.style.display = "flex";
+    }
+  });
 
   // ================================
-  // 3. FECHAR MODAL EXCLUSÃO
+  // 3. FECHAR MODAL DE EXCLUSÃO
   // ================================
   cancelarModal.onclick = () => {
     modalExcluir.style.display = "none";
   };
 
-  modalExcluir.onclick = (e) => {
+  modalExcluir.addEventListener("click", (e) => {
     if (e.target === modalExcluir) modalExcluir.style.display = "none";
-  };
+  });
 
   // ================================
   // 4. CONFIRMAR EXCLUSÃO
   // ================================
   formExcluir.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const id = inputIdExcluir.value;
 
     const response = await fetch(`http://localhost:3005/api/produtos/${id}`, {
@@ -133,15 +140,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // ================================
-  // 5. FECHAR MODAL EDIÇÃO
+  // 5. FECHAR MODAL DE EDIÇÃO
   // ================================
   cancelarEdicao.onclick = () => {
     modalEditar.style.display = "none";
   };
 
-  modalEditar.onclick = (e) => {
+  modalEditar.addEventListener("click", (e) => {
     if (e.target === modalEditar) modalEditar.style.display = "none";
-  };
+  });
 
   // ================================
   // 6. SALVAR EDIÇÃO (PUT)
@@ -162,7 +169,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const resp = await fetch(`http://localhost:3005/api/produtos/${id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       credentials: "include",
       body: JSON.stringify(payload),
     });

@@ -61,9 +61,15 @@
     </main>
 
     <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
-    <div id="modal-excluir" class="modal-overlay">
-      <div class="modal-content">
-        <h2>Confirmar Exclusão</h2>
+    <div
+      id="modal-excluir"
+      class="modal-overlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="excluir-title"
+    >
+      <div class="modal-content-excluir">
+        <h2 id="excluir-title">Confirmar Exclusão</h2>
         <p>Tem certeza que deseja excluir este produto?</p>
 
         <form id="form-excluir">
@@ -78,10 +84,17 @@
         </form>
       </div>
     </div>
+
     <!-- MODAL DE EDIÇÃO -->
-    <div id="modal-editar" class="modal-overlay">
-      <div class="modal-content">
-        <h2>Editar Produto</h2>
+    <div
+      id="modal-editar"
+      class="modal-overlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="editar-title"
+    >
+      <div class="modal-content-editar">
+        <h2 id="editar-title">Editar Produto</h2>
 
         <form id="form-editar">
           <input type="hidden" id="edit-id" />
