@@ -340,6 +340,8 @@ export async function cancelSale(req, res) {
 
 export async function transmitBatch(req, res) {
   const { orcamentoInicio, orcamentoFim } = req.body;
+
+  console.log(orcamentoInicio, orcamentoFim);
   if (
     typeof orcamentoInicio === "undefined" ||
     typeof orcamentoFim === "undefined"

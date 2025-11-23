@@ -11,17 +11,21 @@ async function handleTransmitir(e) {
   }
 
   try {
-    await fetch("http://localhost:8080/api/sale/transmit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
+    const requestTransmit = await fetch(
+      "http://localhost:8080/api/sale/transmit",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          orcamentoInicio: popupInputs[0].value,
+          orcamentoFim: popupInputs[1].value,
+        }),
       },
-      credentials: "include",
-      body: JSON.stringify({
-        rpsInicio: popupInputs[0].value,
-        rpsFim: popupInputs[1].value,
-      }),
-    });
+    );
+    const dataTransmit = await requestTransmit.json();
   } catch (error) {
     console.error("Erro:", error.message);
     alert("Erro ao conectar com a API.");
@@ -36,7 +40,7 @@ async function handleMonitorar(e) {
   }
 
   try {
-    await fetch("http://localhost:8080/api/sale/monitor", {
+    const request = await fetch("http://localhost:8080/api/sale/monitor", {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",
@@ -47,6 +51,9 @@ async function handleMonitorar(e) {
         rpsFim: popupInputs[3].value,
       }),
     });
+
+    const response = await request.json();
+    alert(response.message);
   } catch (error) {
     console.error("Erro:", error.message);
     alert("Erro ao conectar com a API.");

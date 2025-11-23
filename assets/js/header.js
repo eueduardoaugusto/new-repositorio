@@ -27,7 +27,7 @@ function atualizarData() {
   const ano = hoje.getFullYear();
 
   document.getElementById(
-    "dateDisplay"
+    "dateDisplay",
   ).textContent = `📅 ${dia}/${mes}/${ano}`;
 }
 
