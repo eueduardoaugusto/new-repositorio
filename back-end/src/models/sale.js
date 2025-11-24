@@ -10,25 +10,20 @@ const Sale = sequelize.define(
       autoIncrement: true,
       field: "id_venda",
     },
-    client_id: {
+    budgetId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      field: "id_cliente",
+      field: "id_orcamento",
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: "id_usuario",
-    },
-    total_value: { type: DataTypes.DECIMAL(10, 2), field: "valor_total" },
-    payment_type: {
-      type: DataTypes.ENUM("Dinheiro", "Cartao", "Pix", "Outros"),
-      field: "tipo_pagamento",
-    },
+    clientId: { type: DataTypes.INTEGER, field: "id_cliente" },
+    userId: { type: DataTypes.INTEGER, field: "id_usuario" },
+    totalValue: { type: DataTypes.DECIMAL(10, 2), field: "valor" },
+    issueDate: { type: DataTypes.DATE, field: "data_emissao" },
+    type: { type: DataTypes.STRING, field: "tipo" },
+    installments: { type: DataTypes.INTEGER, field: "qt_parcelas" },
   },
   {
     tableName: "vendas",
-    timestamps: false,
+    timestamps: true,
   },
 );
 

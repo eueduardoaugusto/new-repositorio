@@ -60,5 +60,21 @@ async function handleMonitorar(e) {
   }
 }
 
+(async function getAllSales() {
+  try {
+    const requestSales = await fetch("http://localhost:8080/api/sale", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const resposeSalesData = await requestSales.json();
+
+    console.log(resposeSalesData.sales);
+  } catch (error) {
+    console.error("Erro:", error.message);
+    alert("Erro ao conectar com a API.");
+  }
+})();
+
 btnsSave[0].addEventListener("click", handleTransmitir);
 btnsSave[1].addEventListener("click", handleMonitorar);
