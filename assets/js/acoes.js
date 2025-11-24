@@ -1,3 +1,6 @@
+const btnActions = document.querySelector("#actions");
+
+btnActions.addEventListener("click", abrirPopupAcoes);
 function abrirPopupAcoes() {
   document.getElementById("popup-acoes").style.display = "flex";
 }
@@ -25,6 +28,7 @@ function fecharPopups() {
   document.getElementById("popup-acoes").style.display = "none";
 }
 
+// Fechar ao clicar fora
 window.addEventListener("click", function (e) {
   const popups = ["popup-transmitir", "popup-monitorar", "popup-acoes"];
   popups.forEach((id) => {

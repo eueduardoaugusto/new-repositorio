@@ -121,14 +121,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const id = editId.value;
 
-    const payload = {
-      nome: editNome.value,
-      telefone: editTelefone.value,
-      pet_nome: editPetNome.value,
-      pet_especie: editPetEspecie.value,
-      pet_raca: editPetRaca.value,
-      pet_idade: editPetIdade.value,
-    };
+    tr.innerHTML = `
+        <td>${p.id_cliente}</td>
+        <td>${p.nome}</td>
+        <td>${p.telefone}</td>
+        <td>${p.Pets ? p.Pets[0].pet_name : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_specie : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_race : ""}</td>
+        <td>${p.Pets ? p.Pets[0].pet_age : ""}</td>
+      `;
 
     const resp = await fetch(`http://localhost:3005/api/clientes/${id}`, {
       method: "PUT",

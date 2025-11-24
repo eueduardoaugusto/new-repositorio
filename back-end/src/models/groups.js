@@ -21,7 +21,7 @@ const Grupos = sequelize.define(
       allowNull: false,
     },
   },
-  { timestamps: true, tableName: "Grupos" }
+  { timestamps: true, tableName: "Grupos" },
 );
 
 export default Grupos;
