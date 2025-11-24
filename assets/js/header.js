@@ -24,13 +24,13 @@ function atualizarData() {
   const ano = hoje.getFullYear();
 
   document.getElementById(
-    "dateDisplay"
+    "dateDisplay",
   ).textContent = `📅 ${dia}/${mes}/${ano}`;
 }
 
 async function carregarUsuario() {
   try {
-    const response = await fetch("http://localhost:3005/api/auth/me", {
+    const response = await fetch("http://localhost:8080/api/auth/me", {
       credentials: "include",
     });
 

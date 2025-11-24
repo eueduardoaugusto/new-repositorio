@@ -9,6 +9,7 @@ export const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// configuração dos cors (É isso que irá definir a conexão com o Front-End)
 app.use(
   cors({
     origin: [
@@ -17,7 +18,7 @@ app.use(
       "http://localhost:5500",
     ],
     credentials: true,
-  })
+  }),
 );
 
 app.use(cookieParser());

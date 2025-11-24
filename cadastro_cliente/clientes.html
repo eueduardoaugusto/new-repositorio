@@ -1,123 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cantinho do Pet - Cliente</title>
-    <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/clientes_style.css" />
-  </head>
-  <body>
-    <div id="header"></div>
-    <div id="pageType" data-type="cliente"></div>
 
-    <script src="/assets/js/header.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantinho do Pet - Cliente</title>
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/clientes_style.css" />
+</head>
 
-    <main>
-      <div class="botoes-topo">
-        <a href="cadastro_cliente.html" class="btn-verde">NOVO CLIENTE</a>
+<main>
+  <div class="botoes-topo">
+    <a href="cadastro_cliente.html" class="btn-verde">NOVO CLIENTE</a>
 
-        <button class="btn-branco">EXPORTAR</button>
+    <button class="btn-branco">EXPORTAR</button>
 
-        <div class="filtro-pesquisa">
-          <div class="dropdown">
-            <button class="filtro-btn">🔍</button>
-            <div class="dropdown-conteudo">
-              <label
-                ><input type="radio" name="filtro" checked /> ID Cliente</label
-              >
-              <label><input type="radio" name="filtro" /> Cliente</label>
-              <label><input type="radio" name="filtro" /> Telefone</label>
-            </div>
-          </div>
-          <input type="text" placeholder="Pesquisar..." />
+    <div class="filtro-pesquisa">
+      <div class="dropdown">
+        <button class="filtro-btn">🔍</button>
+        <div class="dropdown-conteudo">
+          <label><input type="radio" name="filtro" checked /> ID Cliente</label>
+          <label><input type="radio" name="filtro" /> Cliente</label>
+          <label><input type="radio" name="filtro" /> Telefone</label>
         </div>
       </div>
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+  </div>
 
-      <section class="tabela">
-        <table>
-          <thead>
-            <tr>
-              <th>ID Cliente</th>
-              <th>Cliente</th>
-              <th>Telefone</th>
-              <th>Nome Pet</th>
-              <th>Espécie</th>
-              <th>Raça</th>
-              <th>Idade</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </section>
+  <section class="tabela">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>Cliente</th>
+          <th>Telefone</th>
+          <th>Nome Pet</th>
+          <th>Espécie</th>
+          <th>Raça</th>
+          <th>Idade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
 
-      <div id="modal-editar" class="modal">
-        <div class="modal-content">
-          <h3>Editar Cliente</h3>
+  <div id="modal-editar" class="modal">
+    <div class="modal-content">
+      <h3>Editar Cliente</h3>
 
-          <form id="form-editar">
-            <input type="hidden" id="edit-id" />
+      <form id="form-editar">
+        <input type="hidden" id="edit-id" />
 
-            <div class="container-input">
-              <label>Nome:</label>
-              <input type="text" id="edit-nome" required />
-            </div>
-
-            <div class="container-input">
-              <label>Telefone:</label>
-              <input type="text" id="edit-telefone" required />
-            </div>
-
-            <div class="container-input">
-              <label>Nome do Pet:</label>
-              <input type="text" id="edit-pet-nome" required />
-            </div>
-
-            <div class="container-input">
-              <label>Espécie:</label>
-              <input type="text" id="edit-pet-especie" required />
-            </div>
-
-            <div class="container-input">
-              <label>Raça:</label>
-              <input type="text" id="edit-pet-raca" required />
-            </div>
-
-            <div class="container-input">
-              <label>Idade:</label>
-              <input type="number" id="edit-pet-idade" required />
-            </div>
-
-            <div class="modal-botoes">
-              <button type="submit" class="btn-salvar">Confirmar</button>
-              <button type="button" id="cancelar-edicao" class="btn-branco">
-                Cancelar
-              </button>
-            </div>
-          </form>
+        <div class="container-input">
+          <label>Nome:</label>
+          <input type="text" id="edit-nome" required />
         </div>
-      </div>
 
-      <div id="modal-excluir" class="modal">
-        <div class="modal-content">
-          <h3>Excluir Cliente</h3>
-          <p>Tem certeza que deseja excluir este cliente?</p>
-
-          <form id="form-excluir">
-            <input type="hidden" id="id-excluir" />
-
-            <div class="modal-botoes">
-              <button type="submit" class="btn-vermelho">Excluir</button>
-              <button type="button" id="cancelar-modal" class="btn-branco">
-                Cancelar
-              </button>
-            </div>
-          </form>
+        <div class="container-input">
+          <label>Telefone:</label>
+          <input type="text" id="edit-telefone" required />
         </div>
-      </div>
-    </main>
 
-    <script src="../assets/js/clientes.js"></script>
-  </body>
+        <div class="container-input">
+          <label>Nome do Pet:</label>
+          <input type="text" id="edit-pet-nome" required />
+        </div>
+
+        <div class="container-input">
+          <label>Espécie:</label>
+          <input type="text" id="edit-pet-especie" required />
+        </div>
+
+        <div class="container-input">
+          <label>Raça:</label>
+          <input type="text" id="edit-pet-raca" required />
+        </div>
+
+        <div class="container-input">
+          <label>Idade:</label>
+          <input type="number" id="edit-pet-idade" required />
+        </div>
+
+        <div class="modal-botoes">
+          <button type="submit" class="btn-salvar">Confirmar</button>
+          <button type="button" id="cancelar-edicao" class="btn-branco">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-excluir" class="modal">
+    <div class="modal-content">
+      <h3>Excluir Cliente</h3>
+      <p>Tem certeza que deseja excluir este cliente?</p>
+
+      <form id="form-excluir">
+        <input type="hidden" id="id-excluir" />
+
+        <div class="modal-botoes">
+          <button type="submit" class="btn-vermelho">Excluir</button>
+          <button type="button" id="cancelar-modal" class="btn-branco">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/clientes.js"></script>
+</body>
+
 </html>

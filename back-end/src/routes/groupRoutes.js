@@ -1,12 +1,12 @@
 import express from "express";
 import {
-  listarGrupos,
+  atualizarGrupos,
   buscarGrupos,
   criarGrupos,
-  atualizarGrupos,
   deletarGrupos,
+  listarGrupos,
   listarGruposPorSetor,
-} from "../controllers/groupControllers.js";
+} from "../controllers/groupController.js";
 import authGuard from "../middleware/authGuard.js";
 
 const router = express.Router();

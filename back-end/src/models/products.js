@@ -4,9 +4,15 @@ import { DataTypes } from "sequelize";
 const Produto = sequelize.define(
   "Produto",
   {
+    id_produto: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     codigo: {
       type: DataTypes.STRING,
       allowNull: false,
+      field: "codigo_ean",
     },
     nome: {
       type: DataTypes.STRING,
@@ -24,15 +30,21 @@ const Produto = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    id_fornecedor: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_fornecedor",
+    },
+    quantidade: { type: DataTypes.INTEGER, field: "quantidade_estoque" },
     preco: {
-      type: DataTypes.STRING,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
   },
   {
-    timestamps: true,
-    tableName: "produto",
-  }
+    timestamps: false,
+    tableName: "produtos",
+  },
 );
 
 export default Produto;

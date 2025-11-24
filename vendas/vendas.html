@@ -1,123 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/vendas.css">
     <title>Vendas</title>
 </head>
+
 <body>
 
-<div id="header"></div>
-<div id="pageType" data-type="vendas"></div>
+    <div id="header"></div>
+    <div id="pageType" data-type="vendas"></div>
 
-<script src="/assets/js/header.js"></script>
+    <main>
+        <div class="top-actions">
+            <button class="btn-venda" onclick="window.location.href='nova_venda.html'">+ VENDA</button>
+            <button class="btn-outras" id="actions">OUTRAS AÇÕES</button>
 
-<script src="../assets/js/acoes.js" defer></script>
-
-<div class="top-actions">
-    <button class="btn-venda" onclick="window.location.href='nova_venda.html'">+ VENDA</button>
-    <button class="btn-outras" onclick="abrirPopupAcoes()">OUTRAS AÇÕES</button>
-
-      <div class="filtro-pesquisa">
-        <div class="dropdown">
-          <button class="filtro-btn">🔍</button>
-          <div class="dropdown-conteudo">
-            <label><input type="radio" name="filtro" checked> ID Cliente</label>
-            <label><input type="radio" name="filtro"> Cliente</label>
-            <label><input type="radio" name="filtro"> Telefone</label>
-            <label><input type="radio" name="filtro"> CPF</label>
-          </div>
+            <div class="filtro-pesquisa">
+                <div class="dropdown">
+                    <button class="filtro-btn">🔍</button>
+                    <div class="dropdown-conteudo">
+                        <label><input type="radio" name="filtro" checked> ID Cliente</label>
+                        <label><input type="radio" name="filtro"> Cliente</label>
+                        <label><input type="radio" name="filtro"> Telefone</label>
+                        <label><input type="radio" name="filtro"> CPF</label>
+                    </div>
+                </div>
+                <input type="text" placeholder="Pesquisar...">
+            </div>
         </div>
-        <input type="text" placeholder="Pesquisar...">
-      </div>
-    </div>
 
-<table class="tabela">
-<thead>
-<tr>
-    <th>Ação</th>
-    <th>Status</th>
-    <th>Orçamento</th>
-    <th>RPS</th>
-    <th>NFs-e</th>
-    <th>Cliente</th>
-    <th>Valor</th>
-    <th>Tipo</th>
-    <th>Qt. Parcelas</th>
-    <th>Dt. Emissão</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td><img class="lapiz" src="../assets/img/editar.png"></td>
-    <td><div class="circle red"></div></td>
-    <td>0001</td><td>00001</td><td>001</td>
-    <td>Angela Cristina Souza</td>
-    <td>50</td><td>CC</td><td>01</td><td>19/09/2025</td>
-</tr>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Ação</th>
+                    <th>Status</th>
+                    <th>Orçamento</th>
+                    <th>RPS</th>
+                    <th>NFs-e</th>
+                    <th>Cliente</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                    <th>Qt. Parcelas</th>
+                    <th>Dt. Emissão</th>
+                </tr>
+            </thead>
+            <tbody id="salesList">
+                <tr>
+                    <td><img class="lapiz" src="../assets/img/editar.png"></td>
+                    <td>
+                        <div class="circle red"></div>
+                    </td>
+                    <td>0001</td>
+                    <td>00001</td>
+                    <td>001</td>
+                    <td>Angela Cristina Souza</td>
+                    <td>50</td>
+                    <td>CC</td>
+                    <td>01</td>
+                    <td>19/09/2025</td>
+                </tr>
 
-<tr>
-    <td><img class="lapiz" src="../assets/img/editar.png"></td>
-    <td><div class="circle red"></div></td>
-    <td>0002</td><td>00002</td><td>002</td>
-    <td>Flavio Roberto Santos</td>
-    <td>70</td><td>DP</td><td>01</td><td>19/09/2025</td>
-</tr>
+                <tr>
+                    <td><img class="lapiz" src="../assets/img/editar.png"></td>
+                    <td>
+                        <div class="circle red"></div>
+                    </td>
+                    <td>0002</td>
+                    <td>00002</td>
+                    <td>002</td>
+                    <td>Flavio Roberto Santos</td>
+                    <td>70</td>
+                    <td>DP</td>
+                    <td>01</td>
+                    <td>19/09/2025</td>
+                </tr>
 
-<tr>
-    <td><img class="lapiz" src="../assets/img/editar.png"></td>
-    <td><div class="circle gray"></div></td>
-    <td>0003</td><td>00003</td><td>003</td>
-    <td>Maria Eduarda Ribeiro</td>
-    <td>80</td><td>CC</td><td>07</td><td>19/09/2025</td>
-</tr>
-</tbody>
-</table>
+                <tr>
+                    <td><img class="lapiz" src="../assets/img/editar.png"></td>
+                    <td>
+                        <div class="circle gray"></div>
+                    </td>
+                    <td>0003</td>
+                    <td>00003</td>
+                    <td>003</td>
+                    <td>Maria Eduarda Ribeiro</td>
+                    <td>80</td>
+                    <td>CC</td>
+                    <td>07</td>
+                    <td>19/09/2025</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div class="popup-acoes" id="popup-acoes">
-    <div class="popup-content">
-        <h2>O que deseja fazer?</h2>
-        <button class="btn-transmitir">TRANSMITIR</button>
-        <button class="btn-monitorar">MONITORAR</button>
-    </div>
-
-
-<div class="popup-transmitir" id="popup-transmitir">
-    <div class="popup-box">
-        <h2>TRANSMITIR</h2>
-
-        <label>Orçamento Inicial</label>
-        <input type="text" placeholder="" value="">
-
-        <label>Orçamento Final</label>
-        <input type="text" placeholder="" value="">
-
-        <div class="btns">
-            <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
-            <button class="btn-salvar">SALVAR</button>
-        </div>
-    </div>
-</div>
-
-
-<div class="popup-monitorar" id="popup-monitorar">
-    <div class="popup-box">
-        <h2>MONITORAR</h2>
-
-        <label>RPS Inicial</label>
-        <input type="text" placeholder="" value="">
-
-        <label>RPS Final</label>
-        <input type="text" placeholder="" value="">
-
-        <div class="btns">
-            <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
-            <button class="btn-salvar">SALVAR</button>
-        </div>
-    </div>
-</div>
+        <div class="popup-acoes" id="popup-acoes">
+            <div class="popup-content">
+                <h2>O que deseja fazer?</h2>
+                <button class="btn-transmitir">TRANSMITIR</button>
+                <button class="btn-monitorar">MONITORAR</button>
+            </div>
 
 
+            <div class="popup-transmitir" id="popup-transmitir">
+                <div class="popup-box">
+                    <h2>TRANSMITIR</h2>
+                    <form id="form_transmission">
+                        <label for="orcamento-inicial">Orçamento Inicial</label>
+                        <input type="text" name="orcamento-inicial" id="orcamento-inicial" placeholder="Ex: ORC-2025-001">
+
+                        <label for="orcamento-final">Orçamento Final</label>
+                        <input type="text" name="orcamento-final" id="orcamento-final" placeholder="Ex: ORC-2026-010">
+
+                        <div class="btns">
+                            <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
+                            <button type="submit" class="btn-salvar">BUSCAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="popup-monitorar" id="popup-monitorar">
+                <div class="popup-box">
+                    <h2>MONITORAR</h2>
+                    <form id="form_monitor">
+                        <label for="rps-inicial">RPS Inicial</label>
+                        <input type="text" name="rps-inicial" id="rps-inicial" placeholder="Ex: 700">
+
+                        <label for="rps-final">RPS Final</label>
+                        <input type="text" name="rps-final" id="rps-final" placeholder="Ex: 706">
+
+                        <div class="btns">
+                            <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
+                            <button type="submit" class="btn-salvar">BUSCAR</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+    </main>
+    <script src="/assets/js/header.js"></script>
+    <script src="../assets/js/acoes.js"></script>
+    <script src="../assets/js/vendas.js"></script>
 </body>
+
 </html>

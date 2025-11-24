@@ -1,4 +1,4 @@
-import Produto from "../models/products.js";
+import { Product as Produto } from "../models/index.js";
 import { Op } from "sequelize";
 
 export const filtrarProduto = async (req, res) => {

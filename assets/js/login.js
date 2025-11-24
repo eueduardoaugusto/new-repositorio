@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3005/api/auth/login";
+const API_URL = "http://localhost:8080/api/auth/login";
 
 document.querySelector(".login-form").addEventListener("submit", async (e) => {
   e.preventDefault();

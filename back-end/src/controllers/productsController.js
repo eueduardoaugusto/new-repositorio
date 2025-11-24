@@ -1,5 +1,4 @@
-import Produto from "../models/products.js";
-
+import { Product as Produto } from "../models/index.js";
 
 export const listarProduto = async (req, res) => {
   try {
@@ -11,10 +10,26 @@ export const listarProduto = async (req, res) => {
   }
 };
 
-
 export const buscarProduto = async (req, res) => {
   try {
     const produto = await Produto.findByPk(req.params.id);
+    if (!produto) {
+      return res.status(404).json({ mensagem: "Produto não encontrado" });
+    }
+    res.status(200).json(produto);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ erro: "Erro ao buscar produto" });
+  }
+};
+
+export const buscarProdutoPorCodigo = async (req, res) => {
+  console.log("este é o código do produto", req.params.code);
+
+  try {
+    const produto = await Produto.findOne({
+      where: { codigo: req.params.code },
+    });
     if (!produto) {
       return res.status(404).json({ mensagem: "Produto não encontrado" });
     }
@@ -35,7 +50,6 @@ export const criarProduto = async (req, res) => {
   }
 };
 
-
 export const atualizarProduto = async (req, res) => {
   try {
     const produto = await Produto.findByPk(req.params.id);
@@ -49,7 +63,6 @@ export const atualizarProduto = async (req, res) => {
     res.status(500).json({ erro: "Erro ao atualizar produto" });
   }
 };
-
 
 export const deletarProduto = async (req, res) => {
   try {

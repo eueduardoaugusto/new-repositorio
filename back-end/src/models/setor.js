@@ -21,7 +21,7 @@ const Setor = sequelize.define(
       allowNull: false,
     },
   },
-  { timestamps: true, tableName: "Setor" }
+  { timestamps: true, tableName: "Setor" },
 );
 
 export default Setor;
