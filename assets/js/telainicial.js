@@ -20,19 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentItem =
         link.closest(".nav-item") || link.closest(".submenu-item");
 
-      // CLICOU EM SUBITEM (submenu-item)
       if (link.closest(".submenu-item")) {
         e.stopPropagation();
         return;
       }
 
-      // CLICOU EM ITEM COM SUBMENU
       if (currentItem.classList.contains("has-submenu")) {
         e.preventDefault();
 
         const wasOpen = currentItem.classList.contains("open");
 
-        // FECHA TODOS OS OUTROS SUBMENUS
         hasSubmenuItems.forEach((i) => {
           if (i !== currentItem) {
             i.classList.remove("open", "active");
@@ -45,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        // ABRIR SUBMENU
         if (!wasOpen) {
           currentItem.classList.add("open", "active");
 
@@ -55,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
             icon.classList.add("fa-minus");
           }
         } else {
-          // FECHAR SUBMENU (remove verde!)
           currentItem.classList.remove("open", "active");
 
           const icon = currentItem.querySelector("i");
@@ -68,10 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // CLICOU EM ITEM NORMAL (sem submenu)
       currentItem.classList.add("active");
 
-      // FECHA TODOS OS SUBMENUS QUANDO CLICA EM ITEM NORMAL
       hasSubmenuItems.forEach((i) => {
         i.classList.remove("open", "active");
 

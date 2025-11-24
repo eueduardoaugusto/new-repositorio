@@ -1,5 +1,65 @@
-// Carregar setores ao abrir a página
-carregarOpcoes();
+let setoresCache = [];
+let gruposCache = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectSetor = document.getElementById("setor");
+  const selectGrupo = document.getElementById("grupo");
+  const form = document.getElementById("cadastro-produto");
+
+  if (selectSetor) selectSetor.addEventListener("change", carregarOpcoesGrupos);
+
+  carregarOpcoes();
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const setorNome =
+        selectSetor?.selectedOptions?.[0]?.textContent?.trim() || "";
+
+      const grupoNome =
+        selectGrupo?.selectedOptions?.[0]?.textContent?.trim() || "";
+
+      const dados = {
+        codigo: document.getElementById("codBarras").value,
+        nome: document.getElementById("nomeProduto").value,
+        tamanho: document.getElementById("tamanho").value,
+        preco: document.getElementById("preco").value,
+        setor: setorNome,
+        grupo: grupoNome,
+      };
+
+      try {
+        const response = await fetch("http://localhost:3005/api/produtos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(dados),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          alert(
+            "Erro ao cadastrar: " + (result.message || "erro desconhecido")
+          );
+          return;
+        }
+
+        alert("Produto cadastrado com sucesso!");
+        form.reset();
+
+        if (selectGrupo) {
+          selectGrupo.innerHTML =
+            '<option value="" disabled selected>Selecione um grupo</option>';
+        }
+      } catch (err) {
+        console.error("Erro ao conectar com a API:", err);
+        alert("Erro ao conectar com a API.");
+      }
+    });
+  }
+});
 
 async function carregarOpcoes() {
   try {
@@ -8,22 +68,27 @@ async function carregarOpcoes() {
     });
 
     if (!response.ok) {
-      console.warn("Usuário não autenticado.");
+      console.warn("Usuário não autenticado ao carregar setores.");
       return;
     }
 
     const data = await response.json();
-
     const selectSetor = document.getElementById("setor");
 
     const setores = data.setores || data || [];
+    setoresCache = Array.isArray(setores) ? setores : [];
 
-    selectSetor.innerHTML = '<option value="">Selecione um setor</option>';
+    if (!selectSetor) return;
 
-    setores.forEach((setor) => {
+    selectSetor.innerHTML =
+      '<option value="" disabled selected>Selecione um setor</option>';
+
+    setoresCache.forEach((setor) => {
       const option = document.createElement("option");
-      option.value = setor.id;
       option.textContent = setor.nome;
+      option.value = setor.nome ?? setor.id ?? "";
+      if (setor.id != null) option.dataset.id = setor.id;
+
       selectSetor.appendChild(option);
     });
   } catch (err) {
@@ -31,87 +96,60 @@ async function carregarOpcoes() {
   }
 }
 
-// Carregar grupos filtrados
 async function carregarOpcoesGrupos() {
   try {
     const selectSetor = document.getElementById("setor");
+    const selectGrupos = document.getElementById("grupo");
+
+    if (!selectSetor || !selectGrupos) return;
+
     const setorSelecionado = selectSetor.value;
 
-    const response = await fetch("http://localhost:3005/api/grupos", {
-      credentials: "include",
-    });
+    if (!gruposCache.length) {
+      const resp = await fetch("http://localhost:3005/api/grupos", {
+        credentials: "include",
+      });
 
-    if (!response.ok) {
-      console.warn("Usuário não autenticado.");
-      return;
+      if (!resp.ok) {
+        console.warn("Usuário não autenticado ao carregar grupos.");
+        return;
+      }
+
+      const data = await resp.json();
+      gruposCache = Array.isArray(data) ? data : data.grupos || [];
     }
 
-    const data = await response.json();
-    const grupos = data.grupos || data || [];
+    selectGrupos.innerHTML =
+      '<option value="" disabled selected>Selecione um grupo</option>';
 
-    const selectGrupos = document.getElementById("grupo");
-    selectGrupos.innerHTML = '<option value="">Selecione um grupo</option>';
-
-    // Se não escolheu setor, não mostra grupos
     if (!setorSelecionado) return;
 
-    // FILTRA os grupos que têm o setor igual ao selecionado
-    const gruposFiltrados = grupos.filter((g) => g.setor == setorSelecionado);
+    const setorObj = setoresCache.find(
+      (s) => String(s.nome) === String(setorSelecionado)
+    );
+
+    const gruposFiltrados = gruposCache.filter((g) => {
+      const gSetor = g.setor;
+
+      if (String(gSetor) === String(setorSelecionado)) return true;
+      if (setorObj && String(gSetor) === String(setorObj.id)) return true;
+
+      if (g.setorId && String(g.setorId) === String(setorObj?.id)) return true;
+      if (g.setor_id && String(g.setor_id) === String(setorObj?.id))
+        return true;
+
+      return false;
+    });
 
     gruposFiltrados.forEach((g) => {
       const option = document.createElement("option");
-      option.value = g.id;
       option.textContent = g.nome;
+      option.value = g.nome ?? g.id ?? "";
+      if (g.id != null) option.dataset.id = g.id;
+
       selectGrupos.appendChild(option);
     });
   } catch (err) {
     console.error("Erro ao carregar grupos:", err);
   }
 }
-
-// QUANDO O SETOR MUDAR → atualizar grupos
-document
-  .getElementById("setor")
-  .addEventListener("change", carregarOpcoesGrupos);
-
-// Evento de submit do formulário
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("cadastro-produto");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const dados = {
-      codigo: document.getElementById("codBarras").value,
-      nome: document.getElementById("nomeProduto").value,
-      tamanho: document.getElementById("tamanho").value,
-      preco: document.getElementById("preco").value,
-      setor: document.getElementById("setor").value,
-      grupo: document.getElementById("grupo").value,
-    };
-
-    try {
-      const response = await fetch("http://localhost:3005/api/produtos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dados),
-        credentials: "include",
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        alert("Erro ao cadastrar: " + result.message);
-        return;
-      }
-
-      alert("Produto cadastrado com sucesso!");
-      form.reset();
-    } catch (error) {
-      console.error("Erro:", error);
-      alert("Erro ao conectar com a API.");
-    }
-  });
-});

@@ -23,7 +23,6 @@ export const buscarSetor = async (req, res) => {
   }
 };
 
-// Criar setor
 export const criarSetor = async (req, res) => {
   try {
     const novoSetor = await Setor.create(req.body);
@@ -34,7 +33,6 @@ export const criarSetor = async (req, res) => {
   }
 };
 
-// Atualizar setor
 export const atualizarSetor = async (req, res) => {
   try {
     const setor = await Setor.findByPk(req.params.id);
@@ -49,7 +47,6 @@ export const atualizarSetor = async (req, res) => {
   }
 };
 
-// Deletar setor
 export const deletarSetor = async (req, res) => {
   try {
     const setor = await Setor.findByPk(req.params.id);

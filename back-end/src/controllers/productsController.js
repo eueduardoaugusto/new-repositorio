@@ -1,6 +1,6 @@
 import Produto from "../models/products.js";
 
-// Listar todos os produtos cadastrados
+
 export const listarProduto = async (req, res) => {
   try {
     const produto = await Produto.findAll();
@@ -11,7 +11,7 @@ export const listarProduto = async (req, res) => {
   }
 };
 
-// Buscar produto por ID
+
 export const buscarProduto = async (req, res) => {
   try {
     const produto = await Produto.findByPk(req.params.id);
@@ -24,7 +24,7 @@ export const buscarProduto = async (req, res) => {
     res.status(500).json({ erro: "Erro ao buscar produto" });
   }
 };
-// Criar produto
+
 export const criarProduto = async (req, res) => {
   try {
     const novoProduto = await Produto.create(req.body);
@@ -35,7 +35,7 @@ export const criarProduto = async (req, res) => {
   }
 };
 
-// Atualizar produto
+
 export const atualizarProduto = async (req, res) => {
   try {
     const produto = await Produto.findByPk(req.params.id);
@@ -50,7 +50,7 @@ export const atualizarProduto = async (req, res) => {
   }
 };
 
-// Deletar produto
+
 export const deletarProduto = async (req, res) => {
   try {
     const produto = await Produto.findByPk(req.params.id);

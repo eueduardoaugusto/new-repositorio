@@ -20,7 +20,7 @@
           <div class="menu-acoes">
             <a href="produtos_cadastro.html">Produtos</a>
             <a href="produtos_setores.html">Setores</a>
-            <a href="produtos_grupos.html">Grupo</a>
+            <a href="produtos_grupos.html">Grupos</a>
           </div>
         </div>
 
@@ -50,8 +50,8 @@
               <th>Nome</th>
               <th>Preço</th>
               <th>Tamanho</th>
-              <th>Grupo</th>
               <th>Setor</th>
+              <th>Grupo</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -60,7 +60,6 @@
       </section>
     </main>
 
-    <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
     <div
       id="modal-excluir"
       class="modal-overlay"
@@ -79,13 +78,12 @@
             <button type="button" class="btn-cancelar" id="cancelar-modal">
               Cancelar
             </button>
-            <button type="submit" class="btn-excluir">Excluir</button>
+            <button type="submit" class="btn-vermelho">Excluir</button>
           </div>
         </form>
       </div>
     </div>
 
-    <!-- MODAL DE EDIÇÃO -->
     <div
       id="modal-editar"
       class="modal-overlay"
@@ -120,26 +118,20 @@
           </div>
 
           <div class="form-group">
-            <label for="edit-grupo">Grupo</label>
-            <input type="text" id="edit-grupo" />
+            <label for="setor">Setor</label>
+            <select id="setor" required></select>
           </div>
 
           <div class="form-group">
-            <label for="edit-setor">Setor</label>
-            <input type="text" id="edit-setor" />
+            <label for="grupo">Grupo</label>
+            <select id="grupo" required></select>
           </div>
 
           <div class="modal-buttons">
             <button type="button" class="btn-cancelar" id="cancelar-edicao">
               Cancelar
             </button>
-            <button
-              type="submit"
-              class="btn-salvar"
-              style="background: #4caf50"
-            >
-              Salvar
-            </button>
+            <button type="submit" class="btn-salvar">Salvar</button>
           </div>
         </form>
       </div>

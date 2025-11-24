@@ -16,11 +16,11 @@ document.querySelector(".login-form").addEventListener("submit", async (e) => {
       credentials: "include",
     });
 
-    let data = {}; // só tenta ler JSON se a resposta tiver conteúdo
+    let data = {};
 
     if (response.status !== 204) {
       data = await response.json();
-    } // PONTOS DE TESTE (Corretamente dentro do escopo)
+    }
 
     if (response.ok) {
       alert("Login realizado com sucesso!");
@@ -34,5 +34,3 @@ document.querySelector(".login-form").addEventListener("submit", async (e) => {
     alert("Erro ao conectar com o servidor.");
   }
 });
-
-// A linha problemática *anterior* foi removida daqui!

@@ -1,4 +1,3 @@
-// Carrega o header
 fetch("/header.html")
   .then((response) => response.text())
   .then((data) => {
@@ -8,10 +7,9 @@ fetch("/header.html")
     atualizarData();
     configurarMenu();
     carregarUsuario();
-    atualizarTituloDinamico(); // <-- CHAMADA DA FUNÇÃO
+    atualizarTituloDinamico();
   });
 
-// Carrega CSS dinamicamente
 function carregarCSS(caminho) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
@@ -19,7 +17,6 @@ function carregarCSS(caminho) {
   document.head.appendChild(link);
 }
 
-// Atualiza a data automaticamente
 function atualizarData() {
   const hoje = new Date();
   const dia = hoje.getDate().toString().padStart(2, "0");
@@ -55,7 +52,6 @@ async function carregarUsuario() {
   }
 }
 
-// Atualiza o título dinamicamente
 function atualizarTituloDinamico() {
   const pageTypeElement = document.getElementById("pageType");
   if (!pageTypeElement) return;
@@ -73,7 +69,6 @@ function atualizarTituloDinamico() {
   tituloEl.textContent = titulos[tipo] || "SISTEMA CANTINHO DO PET";
 }
 
-// Menu lateral
 function configurarMenu() {
   const btn = document.getElementById("menuBtn");
   const sideMenu = document.getElementById("sideMenu");

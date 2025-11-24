@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cantinho do Pet - Cliente</title>
-  <link rel="stylesheet" href="../assets/css/reset.css" />
-  <link rel="stylesheet" href="../assets/css/cadastro_setor.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cantinho do Pet - Cliente</title>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/cadastro_grupos.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="pageType" data-type="produto"></div>
 
-  <div id="header"></div>
-  <div id="pageType" data-type="produto"></div>
+    <script src="/assets/js/header.js"></script>
 
-  <script src="/assets/js/header.js"></script>
+    <main>
+      <div class="botoes-topo">
+        <a href="produtos.html" class="voltar">⬅</a>
 
-  <main>
-    <div class="botoes-topo">
-    <a href="produtos.html" class="voltar">⬅</a>
-    <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
-    <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
-    <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
+        <div class="filtro-pesquisa">
+          <div class="dropdown">
+            <button class="filtro-btn">🔍</button>
+            <div class="dropdown-conteudo">
+              <label><input type="radio" name="filtro" checked /> ID</label>
+              <label><input type="radio" name="filtro" /> Nome</label>
+              <label><input type="radio" name="filtro" /> Setor</label>
+              <label><input type="radio" name="filtro" /> Status</label>
+            </div>
+          </div>
 
-    <div class="filtro-pesquisa">
-      <div class="dropdown">
-        <button class="filtro-btn">🔍</button>
-        <div class="dropdown-conteudo">
-          <label><input type="radio" name="filtro" checked> Código de Barras</label>
-          <label><input type="radio" name="filtro"> Nome</label>
-          <label><input type="radio" name="filtro"> Grupo</label>
-          <label><input type="radio" name="filtro"> Setor</label>
+          <input type="text" placeholder="Pesquisar..." />
         </div>
       </div>
-      <input type="text" placeholder="Pesquisar...">
-    </div>
-  </div>
 
-    <br>
-
-    <div class="container">
+      <div class="container">
         <form id="cadastro-grupos">
-          <p>Cadastrar Grupo</p>
+          <h2>Cadastrar Grupo</h2>
 
-          
-          <div>
+          <div class="campo">
             <label for="nome">Nome Grupo</label>
             <input type="text" id="nome" />
           </div>
-          <div>
+
+          <div class="campo">
             <label for="descricao">Descrição</label>
-            <input type="text" id="descricao"/>
+            <input type="text" id="descricao" />
           </div>
-          <div>
-            <label for="setor">Vincular ao setor</label>
+
+          <div class="campo">
+            <label for="setor">Setor</label>
             <select id="setor">
               <option>Escolha um setor</option>
               <option>Produtos</option>
@@ -59,15 +55,20 @@
               <option>Outros</option>
             </select>
           </div>
-          <div>
+
+          <div class="campo">
             <label for="status">Status</label>
-            <select id="status">
+            <select id="status" required>
+              <option value="" disabled selected>Selecione uma opção</option>
               <option value="1">Ativo</option>
               <option value="0">Inativo</option>
             </select>
           </div>
 
-          <button type="submit" class="btn-enviar">Cadastrar</button>
+          <div class="button-group">
+            <button type="reset" class="btn-reset">Limpar</button>
+            <button type="submit" class="btn-cadastrar">Cadastrar</button>
+          </div>
         </form>
 
         <div>
@@ -110,9 +111,8 @@
           </section>
         </div>
       </div>
+    </main>
 
-    
-</div>
-<script src="../assets/js/grupos.js"></script>
-</body>
+    <script src="../assets/js/grupos.js"></script>
+  </body>
 </html>

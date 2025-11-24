@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // PEGANDO OS CAMPOS
     const dados = {
       nome: document.getElementById("nome").value,
       descricao: document.getElementById("descricao").value,
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       alert("Setor cadastrado com sucesso!");
-      form.reset(); // limpar os campos
+      form.reset();
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao conectar com a API.");
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const setor = await response.json();
 
-    tabelaBody.innerHTML = ""; // limpa a tabela inicial
+    tabelaBody.innerHTML = "";
 
     setor.forEach((p) => {
       const tr = document.createElement("tr");
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td>${p.nome}</td>
         <td>${p.descricao}</td>
         <td>${p.sigla}</td>
-        <td>${p.status || "-"}</td>
+        <td>${p.status ? "Ativo" : "Inativo"}</td>
       `;
 
       tabelaBody.appendChild(tr);

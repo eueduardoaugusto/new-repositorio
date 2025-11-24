@@ -31,7 +31,7 @@ const Produto = sequelize.define(
   },
   {
     timestamps: true,
-    tableName: "produto", // Nome da tabela no banco
+    tableName: "produto",
   }
 );
 

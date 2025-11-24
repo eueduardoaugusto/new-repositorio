@@ -70,7 +70,7 @@ const Cliente = sequelize.define(
   },
   {
     timestamps: true,
-    tableName: "cliente", // Nome da tabela no banco
+    tableName: "clientes",
   }
 );
 

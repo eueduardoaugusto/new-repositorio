@@ -1,14 +1,12 @@
 main {
   padding: 20px;
 }
-
 .acoes {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
-
 .voltar {
   background-color: #f7f7f7;
   border-radius: 8px;
@@ -18,48 +16,6 @@ main {
   text-decoration: none;
   font-weight: bold;
 }
-
-.adicionar {
-  background-color: #b6f0dc;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #004d25;
-  transition: 0.3s;
-}
-
-.adicionar:hover {
-  background-color: #a2e0cb;
-}
-
-.outras {
-  border: 1px solid #ccc;
-  background-color: #fff;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.pesquisa {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  padding: 5px 10px;
-  background-color: #f7f7f7;
-}
-
-.pesquisa input {
-  border: none;
-  outline: none;
-  background: none;
-  padding: 5px;
-}
-
 form {
   margin: auto;
   border: 2px solid #ccc;
@@ -70,7 +26,7 @@ form {
   justify-content: center;
   align-items: center;
   gap: 35px;
-  width: 80%;
+  width: 70%;
 }
 .container {
   display: flex;
@@ -103,7 +59,8 @@ form {
   text-align: center;
 }
 
-.campo input {
+.campo input,
+.campo select {
   flex: 1;
   border: 1px solid #ccc;
   border-left: none;
@@ -111,7 +68,28 @@ form {
   padding: 6px 8px;
 }
 
-.botao-pet {
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.btn-reset {
+  background-color: #f8f402;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000000;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+.btn-reset:hover {
+  background-color: #8f8c02;
+}
+
+.btn-cadastrar {
   background-color: #b6f0dc;
   border: none;
   padding: 10px 15px;
@@ -123,18 +101,6 @@ form {
   width: 100%;
   max-width: 200px;
 }
-
-.botao-pet:hover {
-  background-color: #a2e0cb;
-}
-/*--- Editar Responsividade ---*/
-@media (max-width: 768px) {
-  .linha {
-    grid-template-columns: 1fr;
-  }
-
-  .campo label {
-    min-width: 100px;
-    text-align: left;
-  }
+.btn-cadastrar:hover {
+  background-color: #6dc2a5;
 }

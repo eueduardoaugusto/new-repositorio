@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const tabelaBody = document.querySelector("tbody");
 
-  // MODAL EXCLUSÃO
   const modalExcluir = document.getElementById("modal-excluir");
   const cancelarModal = document.getElementById("cancelar-modal");
   const formExcluir = document.getElementById("form-excluir");
   const inputIdExcluir = document.getElementById("id-excluir");
 
-  // MODAL EDIÇÃO
   const modalEditar = document.getElementById("modal-editar");
   const cancelarEdicao = document.getElementById("cancelar-edicao");
   const formEditar = document.getElementById("form-editar");
@@ -20,9 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const editPetRaca = document.getElementById("edit-pet-raca");
   const editPetIdade = document.getElementById("edit-pet-idade");
 
-  // ================================
-  // 1. CARREGAR CLIENTES
-  // ================================
   async function carregarClientes() {
     try {
       const response = await fetch("http://localhost:3005/api/clientes", {
@@ -61,13 +56,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await carregarClientes();
 
-  // ================================
-  // 2. EVENTOS (EDITAR / EXCLUIR)
-  // ================================
   tabelaBody.addEventListener("click", async (e) => {
     const btn = e.target;
 
-    // EDITAR
     if (btn.classList.contains("btn-atualizar")) {
       const id = btn.dataset.id;
       if (!id) return console.error("ERRO: ID undefined");
@@ -89,7 +80,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       modalEditar.style.display = "flex";
     }
 
-    // EXCLUIR
     if (btn.classList.contains("btn-excluir")) {
       const id = btn.dataset.id;
       inputIdExcluir.value = id;
@@ -97,15 +87,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // ================================
-  // 3. FECHAR MODAL EXCLUSÃO
-  // ================================
   cancelarModal.onclick = () => (modalExcluir.style.display = "none");
   modalExcluir.onclick = (e) => {
     if (e.target === modalExcluir) modalExcluir.style.display = "none";
   };
 
-  // CONFIRMAR EXCLUSÃO
   formExcluir.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -125,15 +111,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // ================================
-  // 4. FECHAR MODAL EDIÇÃO
-  // ================================
   cancelarEdicao.onclick = () => (modalEditar.style.display = "none");
   modalEditar.onclick = (e) => {
     if (e.target === modalEditar) modalEditar.style.display = "none";
   };
 
-  // SALVAR EDIÇÃO
   formEditar.addEventListener("submit", async (e) => {
     e.preventDefault();
 

@@ -1,4 +1,3 @@
-// lib/session.js
 import { SignJWT, jwtVerify } from "jose";
 
 const secretKey = new TextEncoder().encode(process.env.SESSION_SECRET);

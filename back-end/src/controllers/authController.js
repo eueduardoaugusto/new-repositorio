@@ -1,4 +1,3 @@
-// controllers/authController.js
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { createSession } from "../lib/session.js";

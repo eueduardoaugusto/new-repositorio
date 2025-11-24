@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // PEGANDO OS CAMPOS
     const dados = {
       nome: document.getElementById("nome").value,
       cpf: document.getElementById("cpf").value,
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       alert("Cliente cadastrado com sucesso!");
-      form.reset(); // limpar os campos
+      form.reset();
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao conectar com a API.");

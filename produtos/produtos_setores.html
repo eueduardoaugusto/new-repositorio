@@ -16,21 +16,15 @@
     <main>
       <div class="botoes-topo">
         <a href="produtos.html" class="voltar">⬅</a>
-        <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
-        <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
-        <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
 
         <div class="filtro-pesquisa">
           <div class="dropdown">
             <button class="filtro-btn">🔍</button>
             <div class="dropdown-conteudo">
-              <label
-                ><input type="radio" name="filtro" checked /> Código de
-                Barras</label
-              >
+              <label><input type="radio" name="filtro" checked />ID</label>
               <label><input type="radio" name="filtro" /> Nome</label>
-              <label><input type="radio" name="filtro" /> Grupo</label>
-              <label><input type="radio" name="filtro" /> Setor</label>
+              <label><input type="radio" name="filtro" /> Sigla</label>
+              <label><input type="radio" name="filtro" /> Status</label>
             </div>
           </div>
           <input type="text" placeholder="Pesquisar..." />
@@ -41,29 +35,32 @@
 
       <div class="container">
         <form id="cadastro-setor">
-          <p>Adicionar Setor</p>
+          <h2>Cadastrar Setor</h2>
 
-          <div>
+          <div class="campo">
             <label for="nome">Setor</label>
             <input type="text" id="nome" />
           </div>
-          <div>
+          <div class="campo">
             <label for="descricao">Descrição</label>
             <input type="text" id="descricao" />
           </div>
-          <div>
+          <div class="campo">
             <label for="sigla">Sigla</label>
             <input type="text" id="sigla" />
           </div>
-          <div>
+          <div class="campo">
             <label for="status">Status</label>
-            <select id="status">
+            <select id="status" required>
+              <option value="" disabled selected>Selecione uma opção</option>
               <option value="1">Ativo</option>
               <option value="0">Inativo</option>
             </select>
           </div>
-
-          <button type="submit" class="btn-enviar">Cadastrar</button>
+          <div class="button-group">
+            <button type="reset" class="btn-reset">Limpar</button>
+            <button type="submit" class="btn-cadastrar">Cadastrar</button>
+          </div>
         </form>
 
         <div>

@@ -9,6 +9,30 @@ main {
   gap: 10px;
   margin: 15px 20px;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 30px;
+  align-items: flex-start;
+}
+.voltar {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #000;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-enviar {
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
 .filtro-pesquisa {
   margin-left: auto;
   display: flex;
@@ -59,29 +83,6 @@ main {
   padding: 4px 0;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 30px;
-  align-items: flex-start;
-}
-.voltar {
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  padding: 10px 15px;
-  color: #000;
-  font-size: 1.2rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-.btn-enviar {
-  padding: 10px 30px;
-  border-radius: 20px;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}
 form {
   margin: auto;
   border: 2px solid #ccc;

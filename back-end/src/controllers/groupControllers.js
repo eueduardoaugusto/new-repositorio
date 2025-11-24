@@ -37,7 +37,6 @@ export const buscarGrupos = async (req, res) => {
   }
 };
 
-// Criar grupos
 export const criarGrupos = async (req, res) => {
   try {
     const novoGrupos = await Grupos.create(req.body);
@@ -48,7 +47,6 @@ export const criarGrupos = async (req, res) => {
   }
 };
 
-// Atualizar grupos
 export const atualizarGrupos = async (req, res) => {
   try {
     const grupos = await Grupos.findByPk(req.params.id);
@@ -63,7 +61,6 @@ export const atualizarGrupos = async (req, res) => {
   }
 };
 
-// Deletar grupos
 export const deletarGrupos = async (req, res) => {
   try {
     const grupos = await Grupos.findByPk(req.params.id);

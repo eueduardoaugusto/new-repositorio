@@ -2,7 +2,6 @@ main {
   padding: 20px;
 }
 
-/* ---------- BOTÕES DO TOPO ---------- */
 .botoes-topo {
   display: flex;
   align-items: center;
@@ -10,7 +9,6 @@ main {
   margin: 15px 20px;
 }
 
-/* Botão verde padrão */
 .btn-verde {
   background-color: #8ad1b6;
   color: #003d1d;
@@ -27,7 +25,6 @@ main {
   background-color: #76c9ab;
 }
 
-/* Botão branco padrão */
 .btn-branco {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -42,33 +39,6 @@ main {
   background-color: #f2f2f2;
 }
 
-/* ---------- DROPDOWN OUTRAS AÇÕES ---------- */
-.dropdown-acoes {
-  position: relative;
-  display: inline-block;
-}
-
-.menu-acoes {
-  display: none;
-  position: absolute;
-  top: 38px;
-  left: 0;
-  width: 160px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  z-index: 20;
-}
-
-.menu-acoes a {
-  display: block;
-  padding: 10px;
-  color: #000;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
 .menu-acoes a:hover {
   background-color: #e6f7f4;
 }
@@ -77,7 +47,6 @@ main {
   display: block;
 }
 
-/* ---------- FILTRO PESQUISA ---------- */
 .filtro-pesquisa {
   margin-left: auto;
   display: flex;
@@ -128,17 +97,18 @@ main {
   padding: 4px 0;
 }
 
-/* ---------- TABELA ---------- */
 .tabela {
   border: 2px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
+  text-align: center;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
 thead th {
@@ -158,8 +128,7 @@ tr:hover {
   background-color: #f3f7f6;
 }
 
-/* ---------- BOTÕES DE AÇÃO NA TABELA ---------- */
-td .btn-editar,
+td .btn-atualizar,
 td .btn-excluir {
   padding: 6px 12px;
   border-radius: 6px;
@@ -168,27 +137,27 @@ td .btn-excluir {
   font-size: 0.85rem;
   font-weight: 600;
   transition: 0.2s;
+  text-align: center;
 }
 
-.btn-editar {
-  background-color: #e3f7ff;
-  color: #004c6d;
+.btn-atualizar {
+  background-color: #059cdd;
+  color: #ffffff;
 }
 
-.btn-editar:hover {
-  background-color: #d1f0ff;
+.btn-atualizar:hover {
+  background-color: #064f74;
 }
 
 .btn-excluir {
-  background-color: #ffe3e3;
-  color: #8a0000;
+  background-color: #ff0000;
+  color: #ffffff;
 }
 
 .btn-excluir:hover {
-  background-color: #ffd1d1;
+  background-color: #8a0000;
 }
 
-/* ---------- MODAL DE EXCLUSÃO ---------- */
 .modal {
   display: none;
   position: fixed;
@@ -200,12 +169,13 @@ td .btn-excluir {
   justify-content: center;
   align-items: center;
   z-index: 50;
+  text-align: center;
 }
 
 .modal-content {
   background: #fff;
   padding: 25px;
-  width: 350px;
+  width: 30%;
   border-radius: 12px;
   text-align: center;
 }
@@ -218,7 +188,6 @@ td .btn-excluir {
   margin-bottom: 20px;
 }
 
-/* Botão excluir modal */
 .btn-vermelho {
   background-color: #ff7b7b;
   border: none;
@@ -238,7 +207,78 @@ td .btn-excluir {
   margin-left: 10px;
 }
 
-/* ---------- RESPONSIVO ---------- */
+#modal-editar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  text-align: center;
+}
+
+.modal-content {
+  background: #fff;
+  width: 30%;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+#form-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.container-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.container-input label {
+  background-color: #76c9ab;
+  width: 40%;
+  padding: 5px;
+  text-align: center;
+}
+.container-input input {
+  width: 100%;
+  text-align: center;
+}
+.btn-salvar {
+  order: 1;
+  background-color: #8ad1b6;
+  color: #003d1d;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-salvar:hover {
+  background-color: #76c9ab;
+}
+.modal-botoes {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ---------- CORRIGIR ---------- */
 @media (max-width: 768px) {
   th,
   td {

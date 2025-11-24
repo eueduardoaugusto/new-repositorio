@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cantinho do Pet - Cliente</title>
     <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/produtos.css" />
+    <link rel="stylesheet" href="../assets/css/cadastro_produto.css" />
   </head>
   <body>
     <div id="header"></div>
@@ -14,101 +14,49 @@
     <script src="/assets/js/header.js"></script>
 
     <main>
-      <div class="botoes-topo">
+      <div class="acoes">
         <a href="produtos.html" class="voltar">⬅</a>
-        <a href="produtos_cadastro.html" class="btn-verde">+ Produtos</a>
-        <a href="produtos_setores.html" class="btn-verde">+ Setores</a>
-        <a href="produtos_grupos.html" class="btn-verde">+ Grupo</a>
+      </div>
+      <form id="cadastro-produto">
+        <h2>CADASTRAR PRODUTO</h2>
+        <div class="container">
+          <div class="column-left">
+            <div class="campo">
+              <label for="codBarras">Código Barras</label>
+              <input type="text" id="codBarras" value="" />
+            </div>
 
-        <div class="filtro-pesquisa">
-          <div class="dropdown">
-            <button class="filtro-btn">🔍</button>
-            <div class="dropdown-conteudo">
-              <label
-                ><input type="radio" name="filtro" checked /> Código de
-                Barras</label
-              >
-              <label><input type="radio" name="filtro" /> Nome</label>
-              <label><input type="radio" name="filtro" /> Grupo</label>
-              <label><input type="radio" name="filtro" /> Setor</label>
+            <div class="campo">
+              <label for="nomeProduto">Nome Produto</label>
+              <input type="text" id="nomeProduto" value="" />
+            </div>
+
+            <div class="campo">
+              <label for="tamanho">Tamanho</label>
+              <input type="text" id="tamanho" value="" />
             </div>
           </div>
-          <input type="text" placeholder="Pesquisar..." />
-        </div>
-      </div>
 
-      <form id="cadastro-produto">
-        <br />
-        <h2>CADASTRO NOVO PRODUTO</h2>
-        <br />
+          <div class="column-right">
+            <div class="campo">
+              <label for="preco">Preço</label>
+              <input type="text" id="preco" value="" />
+            </div>
 
-        <div class="linha_cheia">
-          <div class="form-group full-width">
-            <label for="codBarras">Código Barras</label>
-            <input type="text" id="codBarras" value="" />
+            <div class="campo">
+              <label for="setor">Setor</label>
+              <select id="setor"></select>
+            </div>
+
+            <div class="campo">
+              <label for="grupo">Grupo</label>
+              <select id="grupo"></select>
+            </div>
           </div>
         </div>
-
-        <br />
-
-        <div class="linha_cheia">
-          <div class="form-group full-width">
-            <label for="nomeProduto">Nome Produto</label>
-            <input type="text" id="nomeProduto" value="" />
-          </div>
-        </div>
-
-        <br />
-
-        <div class="field-row split-fields">
-          <div class="form-group half-width">
-            <label for="tamanho">Tamanho</label>
-            <input type="text" id="tamanho" value="" />
-          </div>
-
-          <br />
-
-          <div class="form-group half-width">
-            <label for="preco">Preço</label>
-            <input type="text" id="preco" value="" />
-          </div>
-        </div>
-
-        <br />
-
-        <div class="field-row split-fields">
-          <div class="form-group half-width">
-            <label for="setor">Setor</label>
-            <select id="setor">
-              <option>Escolha um setor</option>
-              <option>Produtos</option>
-              <option>Serviços</option>
-              <option>Outros</option>
-            </select>
-          </div>
-
-          <br />
-
-          <div class="form-group half-width">
-            <label for="grupo">Grupo</label>
-            <select id="grupo">
-              <option>Escolha um grupo</option>
-              <option>Produtos</option>
-              <option>Serviços</option>
-              <option>Outros</option>
-            </select>
-          </div>
-        </div>
-        <br />
-
         <div class="button-group">
-          <button type="button" class="btn cancel">
-            <a href="produtos.html" style="text-decoration: none; color: white"
-              >VOLTAR</a
-            >
-          </button>
-          <button type="reset" class="btn reset">LIMPAR</button>
-          <button type="submit" class="btn cadastrar">CADASTRAR</button>
+          <button type="reset" class="btn-reset">LIMPAR</button>
+          <button type="submit" class="btn-cadastrar">CADASTRAR</button>
         </div>
       </form>
     </main>

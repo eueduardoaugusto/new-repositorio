@@ -16,79 +16,79 @@
     <main>
       <div class="acoes">
         <a href="clientes.html" class="voltar">⬅</a>
-        <button class="adicionar">+ CLIENTE</button>
-        <button class="outras">OUTRAS AÇÕES</button>
-
-        <div class="pesquisa">
-          <span class="icone-filtro">🔍</span>
-          <input type="text" placeholder="Pesquisar..." />
-        </div>
       </div>
 
       <form id="cadastro-cliente" class="cadastro_cliente">
-        <div class="linha">
-          <div class="campo">
-            <label>Nome</label>
-            <input type="text" id="nome" />
+        <div class="container">
+          <div class="column-left">
+            <div class="campo">
+              <label>Nome</label>
+              <input type="text" id="nome" />
+            </div>
+            <div class="campo">
+              <label>CPF</label>
+              <input type="number" id="cpf" />
+            </div>
+            <div class="campo">
+              <label>CEP</label>
+              <input type="number" id="cep" />
+            </div>
+            <div class="campo">
+              <label>Logradouro</label>
+              <input type="text" id="logradouro" />
+            </div>
+            <div class="campo">
+              <label>Endereço</label>
+              <input type="text" id="endereco" />
+            </div>
+            <div class="campo">
+              <label>Número</label>
+              <input type="number" id="numero" />
+            </div>
+
+            <div class="campo">
+              <label>Complemento</label>
+              <input type="text" id="complemento" />
+            </div>
+            <div class="campo">
+              <label>Cidade</label>
+              <input type="text" id="cidade" />
+            </div>
           </div>
-          <div class="campo">
-            <label>CPF</label>
-            <input type="number" id="cpf" />
-          </div>
-          <div class="campo">
-            <label>CEP</label>
-            <input type="number" id="cep" />
-          </div>
-          <div class="campo">
-            <label>Logradouro</label>
-            <input type="text" id="logradouro" />
-          </div>
-          <div class="campo">
-            <label>Endereço</label>
-            <input type="text" id="endereco" />
-          </div>
-          <div class="campo">
-            <label>Número</label>
-            <input type="number" id="numero" />
-          </div>
-          <div class="campo">
-            <label>Complemento</label>
-            <input type="text" id="complemento" />
-          </div>
-          <div class="campo">
-            <label>Cidade</label>
-            <input type="text" id="cidade" />
-          </div>
-          <div class="campo">
-            <label>Estado</label>
-            <input type="text" id="estado" value="" />
-          </div>
-          <div class="campo">
-            <label>Email</label>
-            <input type="email" id="email" />
-          </div>
-          <div class="campo">
-            <label>Telefone</label>
-            <input type="number" id="telefone" />
-          </div>
-          <div class="campo">
-            <label>Nome PET</label>
-            <input type="text" id="nome_pet" value="" />
-          </div>
-          <div class="campo">
-            <label>Espécie</label>
-            <input type="text" id="especie" value="" />
-          </div>
-          <div class="campo">
-            <label>Raça</label>
-            <input type="text" id="raca" value="" />
-          </div>
-          <div class="campo">
-            <label>Idade</label>
-            <input type="number" id="idade" value="" />
+          <div class="column-right">
+            <div class="campo">
+              <label>Estado</label>
+              <input type="text" id="estado" value="" />
+            </div>
+            <div class="campo">
+              <label>Email</label>
+              <input type="email" id="email" />
+            </div>
+            <div class="campo">
+              <label>Telefone</label>
+              <input type="number" id="telefone" />
+            </div>
+            <h3 style="text-align: center; padding: 8px; color: #004d25">
+              CADASTRE O PET:
+            </h3>
+            <div class="campo">
+              <label>Nome PET</label>
+              <input type="text" id="nome_pet" value="" />
+            </div>
+            <div class="campo">
+              <label>Espécie</label>
+              <input type="text" id="especie" value="" />
+            </div>
+            <div class="campo">
+              <label>Raça</label>
+              <input type="text" id="raca" value="" />
+            </div>
+            <div class="campo">
+              <label>Idade</label>
+              <input type="number" id="idade" value="" />
+            </div>
           </div>
         </div>
-
         <button type="submit" class="botao-pet">Cadastrar</button>
       </form>
     </main>
