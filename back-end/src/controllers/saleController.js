@@ -1,15 +1,18 @@
+import { Op } from "sequelize"; // ✅ Importação do Operador
 import {
   Sale,
   ItemSold,
   PaymentParcel,
   Invoice,
-  Budget,
+  Budget, // ✅ Importado para o novo filtro
   Client,
   Product,
+  // User (Se não estiver no index.js, precisa ser importado explicitamente)
 } from "../models/index.js";
 import { sequelize } from "../config/database.js";
 import { calculateSaleStatus } from "../utils/calculateSaleStatus.js";
 
+// --- CRUD BÁSICO (CREATE) ---
 export async function create(req, res) {
   const t = await sequelize.transaction();
 
@@ -17,7 +20,7 @@ export async function create(req, res) {
     const {
       budgetId,
       clientId,
-      userId,
+      userId, // Assumindo que User também é importado/associado corretamente
       totalValue,
       issueDate,
       type,
@@ -44,7 +47,7 @@ export async function create(req, res) {
       for (const item of items) {
         await ItemSold.create(
           {
-            saleId: sale.sale_id,
+            saleId: sale.sale_id, // Usando a PK correta da Venda
             productId: item.productId,
             quantity: item.quantity,
             unitPrice: item.unitPrice,
@@ -61,7 +64,7 @@ export async function create(req, res) {
     if (invoice) {
       createdInvoice = await Invoice.create(
         {
-          saleId: sale.sale_id,
+          saleId: sale.sale_id, // Usando a PK correta da Venda
           rpsNumber: invoice.rpsNumber,
           nfseNumber: invoice.nfseNumber,
           issueDate: invoice.issueDate,
@@ -74,7 +77,7 @@ export async function create(req, res) {
       for (const p of payment_parcels) {
         await PaymentParcel.create(
           {
-            saleId: sale.sale_id,
+            saleId: sale.sale_id, // Usando a PK correta da Venda
             method: p.method,
             parcelNumber: p.parcelNumber,
             parcelValue: p.parcelValue,
@@ -98,9 +101,10 @@ export async function create(req, res) {
     return res.status(500).json({ error: err.message });
   }
 }
-
+// --- BUSCA GERAL (GET ALL) ---
 export async function getAll(req, res) {
   try {
+    // 💡 OBS: Se 'User' for necessário, certifique-se de importá-lo no topo
     const sales = await Sale.findAll({
       include: [
         { model: Client, attributes: ["nome"] },
@@ -133,6 +137,126 @@ export async function getAll(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
+
+// ----------------------------------------------------------------------
+// ✅ FUNÇÃO ORIGINAL: FILTRO POR INTERVALO DE RPS
+// ----------------------------------------------------------------------
+export async function filterSalesByRPS(req, res) {
+  const { startRPS, endRPS } = req.query;
+
+  if (!startRPS || !endRPS) {
+    return res
+      .status(400)
+      .json({ message: "Os números de RPS inicial e final são obrigatórios." });
+  }
+
+  try {
+    const sales = await Sale.findAll({
+      include: [
+        {
+          model: Invoice,
+          where: {
+            rpsNumber: {
+              [Op.between]: [startRPS.toString(), endRPS.toString()],
+            },
+          },
+          required: true,
+          attributes: ["rpsNumber", "nfseNumber"],
+        },
+        { model: Client, attributes: ["nome"] },
+        { model: Budget, attributes: ["budgetNumber", "totalValue"] },
+        {
+          model: PaymentParcel,
+          attributes: ["paymentParcel_id", "parcelValue", "method"],
+        },
+      ],
+      attributes: [
+        "sale_id",
+        "totalValue",
+        "issueDate",
+        "type",
+        "installments",
+      ],
+      nest: true,
+      raw: false,
+    });
+
+    const salesWithStatus = sales.map((sale) => {
+      const saleData = sale.toJSON();
+      saleData.status = calculateSaleStatus(saleData);
+      return saleData;
+    });
+
+    return res.json(salesWithStatus);
+  } catch (error) {
+    console.error("Erro ao filtrar vendas por RPS:", error);
+    return res.status(500).json({ error: error.message });
+  }
+}
+// ----------------------------------------------------------------------
+
+// ----------------------------------------------------------------------
+// 🆕 NOVA FUNÇÃO: FILTRO POR INTERVALO DE ORÇAMENTO (budgetNumber)
+// ----------------------------------------------------------------------
+export async function filterSalesByBudgetNumbers(req, res) {
+  // Recebe startBudget e endBudget via Query Params (ex: ?startBudget=10&endBudget=20)
+  const { startBudget, endBudget } = req.query;
+
+  if (!startBudget || !endBudget) {
+    return res.status(400).json({
+      message: "Os números de Orçamento inicial e final são obrigatórios.",
+    });
+  }
+
+  try {
+    const sales = await Sale.findAll({
+      include: [
+        {
+          model: Budget,
+          where: {
+            // Filtra o budgetNumber (campo JS) entre os valores fornecidos
+            budgetNumber: {
+              [Op.between]: [startBudget.toString(), endBudget.toString()],
+            },
+          },
+          required: true, // Apenas vendas que possuem Orçamento nesse intervalo
+          attributes: ["budgetNumber", "totalValue"],
+        },
+        // Incluir as associações necessárias para a lista de vendas
+        { model: Client, attributes: ["nome"] },
+        { model: Invoice, attributes: ["rpsNumber", "nfseNumber"] },
+        {
+          model: PaymentParcel,
+          attributes: ["paymentParcel_id", "parcelValue", "method"],
+        },
+      ],
+      attributes: [
+        "sale_id",
+        "totalValue",
+        "issueDate",
+        "type",
+        "installments",
+      ],
+      nest: true,
+      raw: false,
+    });
+
+    // Mapeia para adicionar o status calculado, como em getAll
+    const salesWithStatus = sales.map((sale) => {
+      const saleData = sale.toJSON();
+      saleData.status = calculateSaleStatus(saleData);
+      return saleData;
+    });
+
+    return res.json(salesWithStatus);
+  } catch (error) {
+    console.error("Erro ao filtrar vendas por Orçamento:", error);
+    return res.status(500).json({ error: error.message });
+  }
+}
+// ----------------------------------------------------------------------
+
+// --- BUSCA ÚNICA (GET ONE) ---
 export async function getOne(req, res) {
   try {
     const { id } = req.params;
@@ -144,6 +268,7 @@ export async function getOne(req, res) {
         { model: Invoice },
         { model: PaymentParcel },
         { model: ItemSold, include: [Product] },
+        // Incluir o modelo User aqui se necessário
       ],
     });
 
@@ -155,6 +280,7 @@ export async function getOne(req, res) {
   }
 }
 
+// --- ATUALIZAÇÃO (UPDATE) ---
 export async function update(req, res) {
   const t = await sequelize.transaction();
 
@@ -185,6 +311,7 @@ export async function update(req, res) {
       { transaction: t },
     );
 
+    // Atualização de Itens (Destrói e Recria)
     await ItemSold.destroy({ where: { saleId: id }, transaction: t });
 
     if (items) {
@@ -203,6 +330,7 @@ export async function update(req, res) {
       }
     }
 
+    // Atualização de Invoice (Destrói e Recria)
     await Invoice.destroy({ where: { saleId: id }, transaction: t });
 
     if (invoice) {
@@ -217,6 +345,7 @@ export async function update(req, res) {
       );
     }
 
+    // Atualização de PaymentParcel (Destrói e Recria)
     await PaymentParcel.destroy({ where: { saleId: id }, transaction: t });
 
     if (payment_parcels) {
@@ -243,6 +372,7 @@ export async function update(req, res) {
   }
 }
 
+// --- EXCLUSÃO (REMOVE) ---
 export async function remove(req, res) {
   const t = await sequelize.transaction();
 
@@ -252,6 +382,7 @@ export async function remove(req, res) {
     const sale = await Sale.findByPk(id);
     if (!sale) return res.status(404).json({ message: "Sale not found" });
 
+    // Destroi dependências antes de destruir a principal
     await ItemSold.destroy({ where: { saleId: id }, transaction: t });
     await Invoice.destroy({ where: { saleId: id }, transaction: t });
     await PaymentParcel.destroy({ where: { saleId: id }, transaction: t });

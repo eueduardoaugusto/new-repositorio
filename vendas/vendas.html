@@ -105,16 +105,16 @@
             <div class="popup-transmitir" id="popup-transmitir">
                 <div class="popup-box">
                     <h2>TRANSMITIR</h2>
-                    <form>
-                        <label>Orçamento Inicial</label>
-                        <input type="text" placeholder="" value="">
+                    <form id="form_transmission">
+                        <label for="orcamento-inicial">Orçamento Inicial</label>
+                        <input type="text" name="orcamento-inicial" id="orcamento-inicial" placeholder="Ex: ORC-2025-001">
 
-                        <label>Orçamento Final</label>
-                        <input type="text" placeholder="" value="">
+                        <label for="orcamento-final">Orçamento Final</label>
+                        <input type="text" name="orcamento-final" id="orcamento-final" placeholder="Ex: ORC-2026-010">
 
                         <div class="btns">
                             <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
-                            <button class="btn-salvar">SALVAR</button>
+                            <button type="submit" class="btn-salvar">BUSCAR</button>
                         </div>
                     </form>
                 </div>
@@ -124,17 +124,20 @@
             <div class="popup-monitorar" id="popup-monitorar">
                 <div class="popup-box">
                     <h2>MONITORAR</h2>
+                    <form id="form_monitor">
+                        <label for="rps-inicial">RPS Inicial</label>
+                        <input type="text" name="rps-inicial" id="rps-inicial" placeholder="Ex: 700">
 
-                    <label>RPS Inicial</label>
-                    <input type="text" placeholder="" value="">
+                        <label for="rps-final">RPS Final</label>
+                        <input type="text" name="rps-final" id="rps-final" placeholder="Ex: 706">
 
-                    <label>RPS Final</label>
-                    <input type="text" placeholder="" value="">
+                        <div class="btns">
+                            <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
+                            <button type="submit" class="btn-salvar">BUSCAR</button>
+                        </div>
+                    </form>
 
-                    <div class="btns">
-                        <button class="btn-cancelar" onclick="fecharPopups()">CANCELAR</button>
-                        <button class="btn-salvar">SALVAR</button>
-                    </div>
+
                 </div>
             </div>
     </main>

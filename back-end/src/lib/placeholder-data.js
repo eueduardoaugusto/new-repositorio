@@ -88,39 +88,6 @@ const pets = [
   },
 ];
 
-const products = [
-  {
-    codigo: "RPD-001KG",
-    nome: "Ração Premium para Cães Adultos",
-    tamanho: "10KG",
-    setor: "Caes",
-    grupo: "Racao",
-    id_fornecedor: 4,
-    quantidade: 50,
-    preco: 129.9,
-  },
-  {
-    codigo: "SHP-ANTIPUL",
-    nome: "Shampoo Antisséptico para Cães e Gatos",
-    tamanho: "500ml",
-    setor: "Higiene",
-    grupo: "Higiene",
-    id_fornecedor: 5,
-    quantidade: 120,
-    preco: 45.5,
-  },
-  {
-    codigo: "MORD-CORD-G",
-    nome: "Brinquedo Corda Mordedor G",
-    tamanho: "Grande",
-    setor: "Acessorios",
-    grupo: "Brinquedo",
-    id_fornecedor: 6,
-    quantidade: 85,
-    preco: 35.0,
-  },
-];
-
 const suppliers = [
   {
     name: "Pet Food Master S.A.",
@@ -145,4 +112,517 @@ const suppliers = [
   },
 ];
 
-export { users, clients, products, pets, suppliers };
+const products = [
+  {
+    codigo: "RPD-001KG",
+    nome: "Ração Premium para Cães Adultos",
+    tamanho: "10KG",
+    setor: "Caes",
+    grupo: "Racao",
+    id_fornecedor: 1,
+    quantidade: 50,
+    preco: 129.9,
+  },
+  {
+    codigo: "SHP-ANTIPUL",
+    nome: "Shampoo Antisséptico para Cães e Gatos",
+    tamanho: "500ml",
+    setor: "Higiene",
+    grupo: "Higiene",
+    id_fornecedor: 2,
+    quantidade: 120,
+    preco: 45.5,
+  },
+  {
+    codigo: "MORD-CORD-G",
+    nome: "Brinquedo Corda Mordedor G",
+    tamanho: "Grande",
+    setor: "Acessorios",
+    grupo: "Brinquedo",
+    id_fornecedor: 3,
+    quantidade: 85,
+    preco: 35.0,
+  },
+];
+
+const budgets = [
+  {
+    clientId: 1,
+    userId: 3,
+    budgetNumber: "ORC-2025-001",
+    totalValue: 5500.0,
+    issueDate: "2025-09-15",
+  },
+  {
+    clientId: 2,
+    userId: 3,
+    budgetNumber: "ORC-2025-002",
+    totalValue: 1200.0,
+    issueDate: "2025-10-01",
+  },
+  {
+    clientId: 3,
+    userId: 3,
+    budgetNumber: "ORC-2025-003",
+    totalValue: 890.5,
+    issueDate: "2025-11-03",
+  },
+  {
+    clientId: 1,
+    userId: 3,
+    budgetNumber: "ORC-2025-004",
+    totalValue: 150.0,
+    issueDate: "2025-11-10",
+  },
+  {
+    clientId: 2,
+    userId: 3,
+    budgetNumber: "ORC-2025-005",
+    totalValue: 4200.0,
+    issueDate: "2025-11-20",
+  },
+  {
+    clientId: 3,
+    userId: 3,
+    budgetNumber: "ORC-2025-006",
+    totalValue: 980.0,
+    issueDate: "2025-12-01",
+  },
+  {
+    clientId: 1,
+    userId: 3,
+    budgetNumber: "ORC-2026-007",
+    totalValue: 65000.0,
+    issueDate: "2026-01-05",
+  },
+  {
+    clientId: 2,
+    userId: 3,
+    budgetNumber: "ORC-2026-008",
+    totalValue: 350.0,
+    issueDate: "2026-01-15",
+  },
+  {
+    clientId: 3,
+    userId: 3,
+    budgetNumber: "ORC-2026-009",
+    totalValue: 1800.0,
+    issueDate: "2026-02-01",
+  },
+  {
+    clientId: 1,
+    userId: 3,
+    budgetNumber: "ORC-2026-010",
+    totalValue: 75.0,
+    issueDate: "2026-02-10",
+  },
+];
+
+const sales = [
+  {
+    userId: 3,
+    clientId: 1,
+    budgetId: 1,
+    totalValue: 5500.0,
+    issueDate: "2025-09-15T00:00:00.000Z",
+    type: "Servico",
+    installments: 1,
+  },
+  {
+    userId: 3,
+    clientId: 2,
+    budgetId: 2,
+    totalValue: 1200.0,
+    issueDate: "2025-10-01T00:00:00.000Z",
+    type: "Produto",
+    installments: 2,
+  },
+  {
+    userId: 3,
+    clientId: 3,
+    budgetId: 3,
+    totalValue: 890.5,
+    issueDate: "2025-11-03T00:00:00.000Z",
+    type: "Servico",
+    installments: 3,
+  },
+  {
+    userId: 3,
+    clientId: 1,
+    budgetId: 4,
+    totalValue: 150.0,
+    issueDate: "2025-11-10T00:00:00.000Z",
+    type: "Produto",
+    installments: 1,
+  },
+  {
+    userId: 3,
+    clientId: 2,
+    budgetId: 5,
+    totalValue: 4200.0,
+    issueDate: "2025-11-20T00:00:00.000Z",
+    type: "Servico",
+    installments: 4,
+  },
+  {
+    userId: 3,
+    clientId: 3,
+    budgetId: 6,
+    totalValue: 980.0,
+    issueDate: "2025-12-01T00:00:00.000Z",
+    type: "Produto",
+    installments: 1,
+  },
+  {
+    userId: 3,
+    clientId: 1,
+    budgetId: 7,
+    totalValue: 65000.0,
+    issueDate: "2026-01-05T00:00:00.000Z",
+    type: "Servico",
+    installments: 12,
+  },
+  {
+    userId: 3,
+    clientId: 2,
+    budgetId: 8,
+    totalValue: 350.0,
+    issueDate: "2026-01-15T00:00:00.000Z",
+    type: "Produto",
+    installments: 1,
+  },
+  {
+    userId: 3,
+    clientId: 3,
+    budgetId: 9,
+    totalValue: 1800.0,
+    issueDate: "2026-02-01T00:00:00.000Z",
+    type: "Servico",
+    installments: 2,
+  },
+  {
+    userId: 3,
+    clientId: 1,
+    budgetId: 10,
+    totalValue: 75.0,
+    issueDate: "2026-02-10T00:00:00.000Z",
+    type: "Produto",
+    installments: 1,
+  },
+];
+
+const itemSolds = [
+  {
+    saleId: 1,
+    productId: 1,
+    quantity: 1,
+    unitPrice: 5500.0,
+    discount: 0.0,
+    finalPrice: 5500.0,
+  },
+
+  {
+    saleId: 2,
+    productId: 2,
+    quantity: 2,
+    unitPrice: 600.0,
+    discount: 0.0,
+    finalPrice: 1200.0,
+  },
+
+  {
+    saleId: 3,
+    productId: 3,
+    quantity: 1,
+    unitPrice: 890.5,
+    discount: 0.0,
+    finalPrice: 890.5,
+  },
+
+  {
+    saleId: 4,
+    productId: 1,
+    quantity: 1,
+    unitPrice: 150.0,
+    discount: 0.0,
+    finalPrice: 150.0,
+  },
+
+  {
+    saleId: 5,
+    productId: 2,
+    quantity: 1,
+    unitPrice: 4200.0,
+    discount: 0.0,
+    finalPrice: 4200.0,
+  },
+
+  {
+    saleId: 6,
+    productId: 3,
+    quantity: 1,
+    unitPrice: 980.0,
+    discount: 0.0,
+    finalPrice: 980.0,
+  },
+
+  {
+    saleId: 7,
+    productId: 1,
+    quantity: 1,
+    unitPrice: 65000.0,
+    discount: 0.0,
+    finalPrice: 65000.0,
+  },
+
+  {
+    saleId: 8,
+    productId: 2,
+    quantity: 1,
+    unitPrice: 350.0,
+    discount: 0.0,
+    finalPrice: 350.0,
+  },
+
+  {
+    saleId: 9,
+    productId: 3,
+    quantity: 1,
+    unitPrice: 1800.0,
+    discount: 0.0,
+    finalPrice: 1800.0,
+  },
+
+  {
+    saleId: 10,
+    productId: 1,
+    quantity: 1,
+    unitPrice: 75.0,
+    discount: 0.0,
+    finalPrice: 75.0,
+  },
+];
+
+const invoices = [
+  {
+    saleId: 1,
+    rpsNumber: "700",
+    nfseNumber: "NFSE-1001",
+    issueDate: "2025-09-15",
+  },
+  {
+    saleId: 2,
+    rpsNumber: "701",
+    nfseNumber: "NFSE-1002",
+    issueDate: "2025-10-01",
+  },
+  {
+    saleId: 3,
+    rpsNumber: "702",
+    nfseNumber: "NFSE-1003",
+    issueDate: "2025-11-03",
+  },
+  {
+    saleId: 4,
+    rpsNumber: "703",
+    nfseNumber: "NFSE-1004",
+    issueDate: "2025-11-10",
+  },
+
+  {
+    saleId: 6,
+    rpsNumber: "704",
+    nfseNumber: "NFSE-1005",
+    issueDate: "2025-12-01",
+  },
+  {
+    saleId: 7,
+    rpsNumber: "705",
+    nfseNumber: "NFSE-1006",
+    issueDate: "2026-01-05",
+  },
+
+  {
+    saleId: 9,
+    rpsNumber: "706",
+    nfseNumber: "NFSE-1007",
+    issueDate: "2026-02-01",
+  },
+];
+
+const paymentParcels = [
+  {
+    saleId: 1,
+    method: "Boleto",
+    parcelNumber: 1,
+    parcelValue: "5500.00",
+    dueDate: "2025-09-15",
+    status: "Pago",
+  },
+
+  {
+    saleId: 2,
+    method: "Cartão",
+    parcelNumber: 1,
+    parcelValue: "600.00",
+    dueDate: "2025-10-01",
+    status: "Pago",
+  },
+  {
+    saleId: 2,
+    method: "Cartão",
+    parcelNumber: 2,
+    parcelValue: "600.00",
+    dueDate: "2025-11-01",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 3,
+    method: "Pix",
+    parcelNumber: 1,
+    parcelValue: "296.83",
+    dueDate: "2025-11-03",
+    status: "Pago",
+  },
+  {
+    saleId: 3,
+    method: "Pix",
+    parcelNumber: 2,
+    parcelValue: "296.83",
+    dueDate: "2025-12-03",
+    status: "Pendente",
+  },
+  {
+    saleId: 3,
+    method: "Pix",
+    parcelNumber: 3,
+    parcelValue: "296.84",
+    dueDate: "2026-01-03",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 4,
+    method: "Boleto",
+    parcelNumber: 1,
+    parcelValue: "150.00",
+    dueDate: "2025-11-10",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 5,
+    method: "Cartão",
+    parcelNumber: 1,
+    parcelValue: "1050.00",
+    dueDate: "2025-11-20",
+    status: "Pendente",
+  },
+  {
+    saleId: 5,
+    method: "Cartão",
+    parcelNumber: 2,
+    parcelValue: "1050.00",
+    dueDate: "2025-12-20",
+    status: "Pendente",
+  },
+  {
+    saleId: 5,
+    method: "Cartão",
+    parcelNumber: 3,
+    parcelValue: "1050.00",
+    dueDate: "2026-01-20",
+    status: "Pendente",
+  },
+  {
+    saleId: 5,
+    method: "Cartão",
+    parcelNumber: 4,
+    parcelValue: "1050.00",
+    dueDate: "2026-02-20",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 6,
+    method: "Pix",
+    parcelNumber: 1,
+    parcelValue: "980.00",
+    dueDate: "2025-12-01",
+    status: "Pago",
+  },
+
+  {
+    saleId: 7,
+    method: "Boleto",
+    parcelNumber: 1,
+    parcelValue: "5416.66",
+    dueDate: "2026-01-05",
+    status: "Pago",
+  },
+  {
+    saleId: 7,
+    method: "Boleto",
+    parcelNumber: 2,
+    parcelValue: "5416.67",
+    dueDate: "2026-02-05",
+    status: "Pendente",
+  },
+  {
+    saleId: 7,
+    method: "Boleto",
+    parcelNumber: 3,
+    parcelValue: "5416.67",
+    dueDate: "2026-03-05",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 8,
+    method: "Pix",
+    parcelNumber: 1,
+    parcelValue: "350.00",
+    dueDate: "2026-01-15",
+    status: "Pago",
+  },
+
+  {
+    saleId: 9,
+    method: "Cartão",
+    parcelNumber: 1,
+    parcelValue: "900.00",
+    dueDate: "2026-02-01",
+    status: "Pendente",
+  },
+  {
+    saleId: 9,
+    method: "Cartão",
+    parcelNumber: 2,
+    parcelValue: "900.00",
+    dueDate: "2026-03-01",
+    status: "Pendente",
+  },
+
+  {
+    saleId: 10,
+    method: "Boleto",
+    parcelNumber: 1,
+    parcelValue: "75.00",
+    dueDate: "2026-02-10",
+    status: "Pendente",
+  },
+];
+
+export {
+  users,
+  clients,
+  products,
+  pets,
+  suppliers,
+  budgets,
+  sales,
+  itemSolds,
+  invoices,
+  paymentParcels,
+};

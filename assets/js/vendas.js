@@ -1,131 +1,115 @@
-const popupInputs = Array.from(
-  document.querySelectorAll(".popup-box input[type='text']"),
-);
-const btnsSave = Array.from(document.querySelectorAll(".btn-salvar"));
 const salesTable = document.querySelector("#salesList");
 
-async function handleTransmitir(e) {
-  e.preventDefault();
+const formMonitor = document.querySelector("#form_monitor");
+const formTransmission = document.querySelector("#form_transmission");
+const searchBtns = Array.from(document.querySelectorAll(".btn-salvar"));
 
-  if (!popupInputs[0].value || !popupInputs[1].value) {
-    return;
-  }
+const filterConfigurations = [
+  { form: formTransmission, startIdx: 0, endIdx: 1, type: "budget" },
+  { form: formMonitor, startIdx: 0, endIdx: 1, type: "rps" },
+];
 
-  try {
-    const requestTransmit = await fetch(
-      "http://localhost:8080/api/sale/transmit",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          orcamentoInicio: popupInputs[0].value,
-          orcamentoFim: popupInputs[1].value,
-        }),
-      },
-    );
-    const dataTransmit = await requestTransmit.json();
-  } catch (error) {
-    console.error("Erro:", error.message);
-    alert("Erro ao conectar com a API.");
-  }
+function checkIfExistsInputValue(inputs) {
+  return inputs[0].value.trim() !== "" || inputs[1].value.trim() !== "";
 }
 
-async function handleMonitorar(e) {
-  e.preventDefault();
-
-  if (!popupInputs[2].value || !popupInputs[3].value) {
-    return;
-  }
-
+async function getAllSales(filters = "") {
   try {
-    const request = await fetch("http://localhost:8080/api/sale/monitor", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        rpsInicio: popupInputs[2].value,
-        rpsFim: popupInputs[3].value,
-      }),
-    });
+    const url = `http://localhost:8080/api/sales/${filters}`;
 
-    const response = await request.json();
-    alert(response.message);
-  } catch (error) {
-    console.error("Erro:", error.message);
-    alert("Erro ao conectar com a API.");
-  }
-}
-
-async function getAllSales() {
-  try {
-    const requestSales = await fetch("http://localhost:8080/api/sales", {
+    const requestSales = await fetch(url, {
       method: "GET",
       credentials: "include",
     });
 
+    if (requestSales.status === 404) {
+      renderAllSales([]);
+      console.warn("Nenhuma venda encontrada para os filtros aplicados.");
+      return;
+    }
+
+    if (!requestSales.ok) {
+      throw new Error(`Erro HTTP: ${requestSales.status}`);
+    }
+
     const resposeSalesData = await requestSales.json();
     renderAllSales(resposeSalesData);
   } catch (error) {
-    console.error("Erro:", error.message);
-    alert("Erro ao conectar com a API.");
+    console.error("Erro na busca de vendas:", error.message);
+    alert("Erro ao conectar com a API ou buscar dados.");
   }
 }
+
+searchBtns.forEach((btn, i) => {
+  const config = filterConfigurations[i];
+
+  const inputs = Array.from(config.form.querySelectorAll("input"));
+
+  btn.addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    if (!checkIfExistsInputValue(inputs)) {
+      alert("Por favor, preencha pelo menos um dos campos de filtro.");
+      return;
+    }
+
+    const startValue = inputs[config.startIdx].value;
+    const endValue = inputs[config.endIdx].value;
+
+    let filters;
+    if (config.type === "rps") {
+      filters = `filter/rps-numbers?startRPS=${startValue}&endRPS=${endValue}`;
+    } else if (config.type === "budget") {
+      filters = `filter/budget-numbers?startBudget=${startValue}&endBudget=${endValue}`;
+    }
+
+    await getAllSales(filters);
+  });
+});
 
 async function renderAllSales(sales) {
   try {
     salesTable.innerHTML = "";
-
     sales.forEach(
       ({
         status,
-        Cliente,
+        Client,
         Invoice,
         Budget,
+        totalValue,
         type,
+        installments,
         issueDate,
-        PaymentParcels,
       }) => {
         const tr = document.createElement("tr");
-        console.log(sales);
+
         const rps = Invoice?.rpsNumber ?? "-";
         const nfse = Invoice?.nfseNumber ?? "-";
         const budgetNum = Budget?.budgetNumber ?? "-";
-
-        // Verifica se há pelo menos uma parcela para evitar erro de índice [0]
-        const parcelaValor = PaymentParcels?.[0]?.parcelValue ?? "-";
-        const clienteNome = Cliente?.nome ?? "N/A";
+        const clienteNome = Client?.nome ?? "N/A";
         const statusColorKey = status?.colorKey ?? "default";
+        const formattedDate = issueDate
+          ? new Date(issueDate).toLocaleDateString("pt-BR")
+          : "-";
 
         tr.innerHTML = `
-        <td>Ações</td>
-         <td>${statusColorKey}</td>
-        <td>${budgetNum}</td>
-        <td>${rps}</td> 
-        <td>${nfse}</td>
-        <td>${clienteNome}</td>
-        <td> - </td>
-        <td>${type}</td>
-        <td>${parcelaValor}</td>
-        <td>${issueDate.slice(0, 10)}</td>
-       `;
-
-        //         <td>${rps}</td>
-        //         <td>${nfse}</td>
-        //         <td>${"ainda não"}</td>
-        //         <td>${parcelaValor}</td>
-        //   responseSaleData[0].status { text": "Faturado", "colorKey": "info" }
+                        <td>Ações</td>
+                        <td>${statusColorKey}</td>
+                        <td>${budgetNum}</td>
+                        <td>${rps}</td> 
+                        <td>${nfse}</td>
+                        <td>${clienteNome}</td>
+                        <td>${totalValue ?? "-"}</td>
+                        <td>${type}</td>
+                        <td>${installments ?? "-"}</td>
+                        <td>${formattedDate}</td>
+                        `;
         salesTable.appendChild(tr);
       },
     );
   } catch (error) {
-    console.error("Erro ao carregar clientes:", error);
+    console.error("Erro ao renderizar vendas:", error);
   }
 }
+
 getAllSales();
-btnsSave[0].addEventListener("click", handleTransmitir);
-btnsSave[1].addEventListener("click", handleMonitorar);

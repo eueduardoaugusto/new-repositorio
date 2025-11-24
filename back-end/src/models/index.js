@@ -42,6 +42,9 @@ Client.hasMany(Budget, { foreignKey: "id_cliente" });
 Budget.belongsTo(Client, { foreignKey: "id_cliente" });
 Budget.belongsTo(User, { foreignKey: "id_usuario" });
 
+Invoice.belongsTo(Sale, { foreignKey: "id_venda" });
+Sale.hasMany(Invoice, { foreignKey: "id_venda" });
+
 export {
   Client,
   User,
