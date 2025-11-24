@@ -1,7 +1,6 @@
 import { Client as Cliente, Pet } from "../models/index.js";
 import { sequelize } from "../config/database.js";
 
-// Listar todos os clientes cadastrados
 export const listarClientes = async (req, res) => {
   try {
     const clientes = await Cliente.findAll({
@@ -19,7 +18,6 @@ export const listarClientes = async (req, res) => {
   }
 };
 
-// Buscar cliente por ID
 export const buscarCliente = async (req, res) => {
   try {
     const cliente = await Cliente.findByPk(req.params.id, {
@@ -40,7 +38,6 @@ export const buscarCliente = async (req, res) => {
   }
 };
 
-// Criar cliente
 export const criarCliente = async (req, res) => {
   const data = req.body;
   const t = await sequelize.transaction();
@@ -89,7 +86,6 @@ export const criarCliente = async (req, res) => {
   }
 };
 
-// Atualizar cliente
 export const atualizarCliente = async (req, res) => {
   try {
     const cliente = await Cliente.findByPk(req.params.id);
@@ -104,7 +100,6 @@ export const atualizarCliente = async (req, res) => {
   }
 };
 
-// Deletar cliente
 export const deletarCliente = async (req, res) => {
   try {
     const cliente = await Cliente.findByPk(req.params.id);

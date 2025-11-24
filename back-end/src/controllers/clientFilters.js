@@ -1,18 +1,15 @@
 import { Client as Cliente, Pet } from "../models/index.js";
 import { Op } from "sequelize";
 
-// Filtrar clientes por nome, telefone, cpf
 export const filtrarCliente = async (req, res) => {
   try {
     const { nome, telefone, cpf } = req.query;
 
-    // Cria um objeto "where" com condições dinâmicas
     const where = {};
     if (nome) where.nome = { [Op.like]: `%${nome}%` };
     if (telefone) where.telefone = { [Op.like]: `%${telefone}%` };
     if (cpf) where.cpf = { [Op.like]: `%${cpf}%` };
 
-    // Busca no banco de dados
     const clientes = await Cliente.findAll({
       where,
       include: [
