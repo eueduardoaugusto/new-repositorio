@@ -8,10 +8,8 @@ import {
   Product,
 } from "../models/index.js";
 import { sequelize } from "../config/database.js";
+import { calculateSaleStatus } from "../utils/calculateSaleStatus.js";
 
-/* ----------------------------------------
-   CREATE SALE
------------------------------------------ */
 export async function create(req, res) {
   const t = await sequelize.transaction();
 
@@ -29,7 +27,6 @@ export async function create(req, res) {
       payment_parcels,
     } = req.body;
 
-    // 1. Create Sale (NOMES EXATOS DO MODEL!!)
     const sale = await Sale.create(
       {
         budgetId,
@@ -43,7 +40,6 @@ export async function create(req, res) {
       { transaction: t },
     );
 
-    // 2. Itens vendidos
     if (items) {
       for (const item of items) {
         await ItemSold.create(
@@ -60,7 +56,6 @@ export async function create(req, res) {
       }
     }
 
-    // 3. Nota fiscal
     let createdInvoice = null;
 
     if (invoice) {
@@ -75,7 +70,6 @@ export async function create(req, res) {
       );
     }
 
-    // 4. Parcelas
     if (payment_parcels) {
       for (const p of payment_parcels) {
         await PaymentParcel.create(
@@ -105,30 +99,40 @@ export async function create(req, res) {
   }
 }
 
-/* ----------------------------------------
-   GET ALL
------------------------------------------ */
 export async function getAll(req, res) {
   try {
     const sales = await Sale.findAll({
       include: [
-        { model: Client },
-        { model: Budget },
-        { model: Invoice },
-        { model: PaymentParcel },
-        { model: ItemSold, include: [Product] },
+        { model: Client, attributes: ["nome"] },
+        { model: Budget, attributes: ["budgetNumber", "totalValue"] },
+        { model: Invoice, attributes: ["rpsNumber", "nfseNumber"] },
+        {
+          model: PaymentParcel,
+          attributes: ["paymentParcel_id", "parcelValue", "method"],
+        },
       ],
+      attributes: [
+        "sale_id",
+        "totalValue",
+        "issueDate",
+        "type",
+        "installments",
+      ],
+      raw: false,
+      nest: true,
     });
 
-    return res.json(sales);
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const salesWithStatus = sales.map((sale) => {
+      const saleData = sale.toJSON();
+      saleData.status = calculateSaleStatus(saleData);
+      return saleData;
+    });
+
+    return res.json(salesWithStatus);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 }
-
-/* ----------------------------------------
-   GET ONE
------------------------------------------ */
 export async function getOne(req, res) {
   try {
     const { id } = req.params;
@@ -151,9 +155,6 @@ export async function getOne(req, res) {
   }
 }
 
-/* ----------------------------------------
-   UPDATE
------------------------------------------ */
 export async function update(req, res) {
   const t = await sequelize.transaction();
 
@@ -184,7 +185,6 @@ export async function update(req, res) {
       { transaction: t },
     );
 
-    // Replace items
     await ItemSold.destroy({ where: { saleId: id }, transaction: t });
 
     if (items) {
@@ -203,7 +203,6 @@ export async function update(req, res) {
       }
     }
 
-    // Replace invoice
     await Invoice.destroy({ where: { saleId: id }, transaction: t });
 
     if (invoice) {
@@ -218,7 +217,6 @@ export async function update(req, res) {
       );
     }
 
-    // Replace parcels
     await PaymentParcel.destroy({ where: { saleId: id }, transaction: t });
 
     if (payment_parcels) {
@@ -245,9 +243,6 @@ export async function update(req, res) {
   }
 }
 
-/* ----------------------------------------
-   DELETE
------------------------------------------ */
 export async function remove(req, res) {
   const t = await sequelize.transaction();
 
