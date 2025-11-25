@@ -34,6 +34,9 @@ async function getAllSales(filters = "") {
 
     const resposeSalesData = await requestSales.json();
     renderAllSales(resposeSalesData);
+
+    const popupBox = document.querySelectorAll("[data-popup]");
+    popupBox.forEach((popup) => (popup.style.display = "none"));
   } catch (error) {
     console.error("Erro na busca de vendas:", error.message);
     alert("Erro ao conectar com a API ou buscar dados.");
@@ -72,6 +75,7 @@ async function renderAllSales(sales) {
     salesTable.innerHTML = "";
     sales.forEach(
       ({
+        sale_id,
         status,
         Client,
         Invoice,
@@ -92,8 +96,11 @@ async function renderAllSales(sales) {
           ? new Date(issueDate).toLocaleDateString("pt-BR")
           : "-";
 
-        tr.innerHTML = `
-                        <td>Ações</td>
+        tr.innerHTML = `             
+                      <td>
+                        <span class="btn-atualizar" data-id="${sale_id}">Atualizar</span>
+                        <span class="btn-excluir" data-id="${sale_id}">Excluir</span>
+                        </td>
                         <td>${statusColorKey}</td>
                         <td>${budgetNum}</td>
                         <td>${rps}</td> 

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function carregarClientes() {
     try {
-      const response = await fetch("http://localhost:3005/api/clientes", {
+      const response = await fetch("http://localhost:8080/api/clientes", {
         method: "GET",
         credentials: "include",
       });
@@ -30,20 +30,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       const clientes = await response.json();
       tabelaBody.innerHTML = "";
 
+      console.log(clientes);
+
       clientes.forEach((c) => {
         const tr = document.createElement("tr");
 
+        console.log(c.Pets[0]);
+
         tr.innerHTML = `
-          <td>${c.id}</td>
+          <td>${c.id_cliente}</td>
           <td>${c.nome}</td>
           <td>${c.telefone}</td>
-          <td>${c.pet_nome}</td>
-          <td>${c.pet_especie}</td>
-          <td>${c.pet_raca}</td>
-          <td>${c.pet_idade}</td>
+          <td>${c.Pets[0].pet_name}</td>
+          <td>${c.Pets[0].pet_specie}</td>
+          <td>${c.Pets[0].pet_race}</td>
+          <td>${c.Pets[0].pet_age}</td>
           <td>
-            <span class="btn-atualizar" data-id="${c.id}">Atualizar</span>
-            <span class="btn-excluir" data-id="${c.id}">Excluir</span>
+            <span class="btn-atualizar" data-id="${c.id_cliente}">Atualizar</span>
+            <span class="btn-excluir" data-id="${c.id_cliente}">Excluir</span>
           </td>
         `;
 
@@ -131,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td>${p.Pets ? p.Pets[0].pet_age : ""}</td>
       `;
 
-    const resp = await fetch(`http://localhost:3005/api/clientes/${id}`, {
+    const resp = await fetch(`http://localhost:8080/api/clientes/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

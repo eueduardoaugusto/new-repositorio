@@ -182,12 +182,12 @@ function renderItemsList() {
     const row = document.createElement("tr");
     row.innerHTML = `
             <td>${item.barcode}</td>
-            <td>${item.description}</td>
-            <td>${item.quantity}</td>
-            <td>R$ ${item.unitPrice.toFixed(2)}</td>
-            <td>R$ ${item.discount.toFixed(2)}</td>
-            <td>R$ ${item.finalPrice.toFixed(2)}</td>
-            <td><button type="button" class="btn-remove-item" data-index="${index}">Remover</button></td>
+            <td>${item.description}</td>
+            <td>${item.quantity}</td>
+            <td>R$ ${item.unitPrice.toFixed(2)}</td>
+            <td>R$ ${item.discount.toFixed(2)}</td>
+            <td>R$ ${item.finalPrice.toFixed(2)}</td>
+            
         `;
     itemsListBody.appendChild(row);
   });
@@ -370,9 +370,9 @@ document
     };
 
     console.log("Payload para o Backend:", payload);
-
     try {
       const response = await fetch(`${API_BASE_URL}/api/sales`, {
+        // Usa a API_BASE_URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
