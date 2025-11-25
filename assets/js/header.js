@@ -30,7 +30,7 @@ function atualizarData() {
 
 async function carregarUsuario() {
   try {
-    const response = await fetch("http://localhost:8080/api/auth/me", {
+    const response = await fetch("http://localhost:3000/api/auth/me", {
       credentials: "include",
     });
 
