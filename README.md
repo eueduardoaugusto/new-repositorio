@@ -161,7 +161,7 @@ npm install
 npm run dev
 ```
 
-3. Acesse no navegador (lembrando de usar o valor definido para a porta no .env, caso não tenha feito alteração o valor padrão é 3000:
+3. Acesse no navegador (lembrando de usar o valor definido para a porta no .env, caso não tenha feito alteração o valor padrão é 3000):
    http://localhost:3000/api
 
 Se aparecer:
