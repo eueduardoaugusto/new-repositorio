@@ -2,7 +2,7 @@ carregarOpcoes();
 
 async function carregarOpcoes() {
   try {
-    const response = await fetch("http://localhost:3005/api/setor", {
+    const response = await fetch("http://localhost:3000/api/setor", {
       credentials: "include",
     });
 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3005/api/grupos", {
+      const response = await fetch("http://localhost:3000/api/grupos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tabelaBody = document.querySelector("tbody");
 
   try {
-    const response = await fetch("http://localhost:3005/api/grupos", {
+    const response = await fetch("http://localhost:3000/api/grupos", {
       method: "GET",
       credentials: "include",
     });
