@@ -6,6 +6,8 @@
 
 •	No Frontend utilizamos tecnologias básicas sendo elas: HTML, CSS e JavaScript. A comunicação é realizada por meio de rotas HTTP, onde é realizado requisições e a API realiza a resposta através de dados JSON para o Frontend.
 
+OBS: Foi feita uma revisita ao projeto, dadas as limitações da disponibilidade do grupo optamos por desenvolver apenas algumas rotinas (login, tela inicial, cliente, produtos e vendas). Não houve alterações na documentação do projeto, decidimos seguir com a ideia inicial.
+
 ---
 ## 🖥️ Participantes
 
@@ -38,8 +40,8 @@ OBS: O trabalho foi desenvolvido buscando aproveitar da melhor forma, o tempo e 
 ---
 
 ## 📦 Estrutura do projeto
-
-``` BACKEND:
+BACKEND:
+``` 
 src/
 ├── config/
 │ └── database.js # Conexão com o banco via Sequelize
@@ -60,8 +62,8 @@ src/
 ├── app.js # Configuração do Express
 └── server.js # Inicialização do servidor
 ```
-``` FRONTEND:
-
+FRONTEND:
+```
 ├── assets/
 │ └── css/ # Arquivos para estilização do sistema
 │ └── img/ # Imagens usadas
