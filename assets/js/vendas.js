@@ -72,6 +72,7 @@ async function renderAllSales(sales) {
     salesTable.innerHTML = "";
     sales.forEach(
       ({
+        sale_id,
         status,
         Client,
         Invoice,
@@ -92,8 +93,11 @@ async function renderAllSales(sales) {
           ? new Date(issueDate).toLocaleDateString("pt-BR")
           : "-";
 
-        tr.innerHTML = `
-                        <td>Ações</td>
+        tr.innerHTML = `             
+                      <td>
+                        <span class="btn-atualizar" data-id="${sale_id}">Atualizar</span>
+                        <span class="btn-excluir" data-id="${sale_id}">Excluir</span>
+                        </td>
                         <td>${statusColorKey}</td>
                         <td>${budgetNum}</td>
                         <td>${rps}</td> 
