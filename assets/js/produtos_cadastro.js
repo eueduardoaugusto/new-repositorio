@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       try {
-        const response = await fetch("http://localhost:3005/api/produtos", {
+        const response = await fetch("http://localhost:3000/api/produtos", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function carregarOpcoes() {
   try {
-    const response = await fetch("http://localhost:3005/api/setor", {
+    const response = await fetch("http://localhost:3000/api/setor", {
       credentials: "include",
     });
 
@@ -106,7 +106,7 @@ async function carregarOpcoesGrupos() {
     const setorSelecionado = selectSetor.value;
 
     if (!gruposCache.length) {
-      const resp = await fetch("http://localhost:3005/api/grupos", {
+      const resp = await fetch("http://localhost:3000/api/grupos", {
         credentials: "include",
       });
 
