@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://localhost:3000";
 
 document.getElementById("clientId").addEventListener("blur", fetchClientName);
 document.getElementById("clientId").addEventListener("change", fetchClientName);
