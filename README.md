@@ -1,7 +1,9 @@
 # 🧠 PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMAS ORIENTADO A DISPOSITIVOS MÓVEIS E BASEADOS NA WEB
 
 •	Nosso produto consiste em um sistema para gestão de petshop, nomeado como Cantinho Pet, priorizamos por escolher tecnologias atuais e que se enquadra nas habilidades dos participantes.
+
 •	No Backend  utilizamos Node.js + Express + Sequelize + MySQL + Jose (para JWT) + Dotenv + Cookie-parser. Que são componentes responsáveis pela conexão, autenticação e comunicação com o Frontend. 
+
 •	No Frontend utilizamos tecnologias básicas sendo elas: HTML, CSS e JavaScript. A comunicação é realizada por meio de rotas HTTP, onde é realizado requisições e a API realiza a resposta através de dados JSON para o Frontend.
 
 ---
