@@ -15,7 +15,7 @@ function checkIfExistsInputValue(inputs) {
 
 async function getAllSales(filters = "") {
   try {
-    const url = `http://localhost:8080/api/sales/${filters}`;
+    const url = `http://localhost:3000/api/sales/${filters}`;
 
     const requestSales = await fetch(url, {
       method: "GET",
