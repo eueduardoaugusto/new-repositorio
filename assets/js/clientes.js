@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function carregarClientes() {
     try {
-      const response = await fetch("http://localhost:8080/api/clientes", {
+      const response = await fetch("http://localhost:3000/api/clientes", {
         method: "GET",
         credentials: "include",
       });
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const id = btn.dataset.id;
       if (!id) return console.error("ERRO: ID undefined");
 
-      const resp = await fetch(`http://localhost:3005/api/clientes/${id}`, {
+      const resp = await fetch(`http://localhost:3000/api/clientes/${id}`, {
         credentials: "include",
       });
 
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const id = inputIdExcluir.value;
 
-    const resp = await fetch(`http://localhost:3005/api/clientes/${id}`, {
+    const resp = await fetch(`http://localhost:3000/api/clientes/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td>${p.Pets ? p.Pets[0].pet_age : ""}</td>
       `;
 
-    const resp = await fetch(`http://localhost:8080/api/clientes/${id}`, {
+    const resp = await fetch(`http://localhost:3000/api/clientes/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
