@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3005/api/setor", {
+      const response = await fetch("http://localhost:3000/api/setor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tabelaBody = document.querySelector("tbody");
 
   try {
-    const response = await fetch("http://localhost:3005/api/setor", {
+    const response = await fetch("http://localhost:3000/api/setor", {
       method: "GET",
       credentials: "include",
     });
