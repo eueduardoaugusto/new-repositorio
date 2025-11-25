@@ -34,6 +34,9 @@ async function getAllSales(filters = "") {
 
     const resposeSalesData = await requestSales.json();
     renderAllSales(resposeSalesData);
+
+    const popupBox = document.querySelectorAll("[data-popup]");
+    popupBox.forEach((popup) => (popup.style.display = "none"));
   } catch (error) {
     console.error("Erro na busca de vendas:", error.message);
     alert("Erro ao conectar com a API ou buscar dados.");
