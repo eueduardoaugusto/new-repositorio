@@ -106,7 +106,7 @@ CREATE DATABASE projeto_faculdade;
 - Abra o MySQL Workbench
 - Vá em Server > Data Import
 - Selecione Import from Self-Contained File
-- Escolha o arquivo cantinho_pet.sql (presente no repositório)
+- Escolha o arquivo cantinho_pet_oficial.sql (presente no repositório)
 - Em Default Target Schema, selecione ou crie cantinho_pet
 - Clique em Start Import
 
