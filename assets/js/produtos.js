@@ -3,7 +3,7 @@ carregarOpcoes();
 
 async function carregarOpcoes() {
   try {
-    const response = await fetch("http://localhost:3005/api/setor", {
+    const response = await fetch("http://localhost:3000/api/setor", {
       credentials: "include",
     });
 
@@ -35,7 +35,7 @@ async function carregarOpcoesGrupos() {
     const selectSetor = document.getElementById("setor");
     const setorSelecionado = selectSetor.value;
 
-    const response = await fetch("http://localhost:3005/api/grupos", {
+    const response = await fetch("http://localhost:3000/api/grupos", {
       credentials: "include",
     });
 
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function carregarProdutos() {
     try {
-      const response = await fetch("http://localhost:8080/api/produtos", {
+      const response = await fetch("http://localhost:3000/api/produtos", {
         method: "GET",
         credentials: "include",
       });
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (btn.classList.contains("btn-atualizar")) {
       const id = btn.dataset.id;
 
-      const resp = await fetch(`http://localhost:3005/api/produtos/${id}`, {
+      const resp = await fetch(`http://localhost:3000/api/produtos/${id}`, {
         credentials: "include",
       });
 
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const id = inputIdExcluir.value;
 
-    const response = await fetch(`http://localhost:3005/api/produtos/${id}`, {
+    const response = await fetch(`http://localhost:3000/api/produtos/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       preco: editPreco.value,
     };
 
-    const resp = await fetch(`http://localhost:3005/api/produtos/${id}`, {
+    const resp = await fetch(`http://localhost:3000/api/produtos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
