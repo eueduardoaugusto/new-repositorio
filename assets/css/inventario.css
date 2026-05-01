@@ -1,0 +1,376 @@
+/* RESET BÁSICO E ESTRUTURA PRINCIPAL */
+main {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* CONTAINER DO TOPO - ONDE ESTAVA O PROBLEMA */
+.topo-geral {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  width: 100%;
+  
+  /* Mantém tudo em uma linha só e impede quebra */
+  flex-wrap: nowrap; 
+}
+
+/* BOTÃO VOLTAR */
+.voltar {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #000;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  flex-shrink: 0; /* Impede que o botão diminua */
+}
+
+/* ESTRUTURA DAS CAIXAS DE INFORMAÇÃO (N° E FORNECEDOR) */
+.info {
+  display: flex;
+  align-items: center;
+  background: #d9f3ea;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 40px;
+  white-space: nowrap;
+  flex-shrink: 0; /* Garante que a caixa não seja espremida */
+  visibility: hidden; /* Mantém o espaço mas esconde o conteúdo */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Classe que será adicionada via JS para mostrar */
+.info.mostrar {
+  visibility: visible;
+  opacity: 1;
+}
+
+.label {
+  background: #76c9ab;
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.valor {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* AJUSTES ESPECÍFICOS PARA O ALINHAMENTO */
+.info:first-of-type {
+  min-width: 160px; /* Tamanho fixo para o número do inventário */
+}
+
+.fornecedor {
+  flex: 1; /* Faz o campo fornecedor ocupar o espaço que sobrar no meio */
+  min-width: 150px;
+  overflow: hidden;
+}
+
+/* BOTÕES PRODUTO E SALVAR */
+.topo-geral .produto,
+.topo-geral .salvar {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap; /* Evita que o texto do botão quebre */
+  flex-shrink: 0;      /* Impede que o botão "suma" se a tela diminuir */
+}
+
+.produto {
+  background: #65aae7;
+}
+
+.salvar {
+  background: #49c549;
+}
+
+/* TABELA */
+.tabela {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+thead th {
+  background-color: #b6f0dc;
+  color: #004d25;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid #fff;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+tr:hover {
+  background-color: #f3f7f6;
+}
+
+/* BOTÕES DA TABELA */
+td .btn-atualizar,
+td .btn-excluir {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-atualizar {
+  background-color: #059cdd;
+  color: #ffffff;
+}
+
+.btn-excluir {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  width: 400px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+#form-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.container-input label {
+  background-color: #76c9ab;
+  width: 40%;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.container-input input {
+  flex: 1;
+  padding: 5px;
+  text-align: center;
+}
+
+.btn-salvar {
+  background-color: #8ad1b6;
+  color: #003d1d;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+/* CHECKBOX PERSONALIZADO (CÍRCULO) */
+.check-container {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.check-container input {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff4d4d;
+  display: inline-block;
+  transition: 0.2s;
+  position: relative;
+}
+
+.check-container input:checked + .checkmark {
+  background-color: #4caf50;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.check-container input:checked + .checkmark::after {
+  display: block;
+}
+
+/* Estilos específicos para o Modal de Produto */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #d9d9d9;
+  border-radius: 20px;
+  padding: 30px;
+  width: 450px;
+  border: 2px solid #000;
+}
+
+/* Título */
+.popup-content h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* Inputs estilo pílula */
+.container-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.container-input label {
+  background: #76c9ab;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  z-index: 2;
+}
+
+.container-input input {
+  flex: 1;
+  padding: 6px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin-left: -15px;
+  text-align: center;
+}
+
+/* Linha dupla */
+.row-inputs {
+  display: flex;
+  gap: 15px;
+}
+
+.row-inputs .container-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.container-input input {
+  flex: 1;
+  min-width: 0; /* 🔥 impede o estouro */
+}
+
+.row-inputs label {
+  min-width: 90px;
+  text-align: center;
+}
+/* Quantidade maior */
+.full-width label {
+  min-width: 180px;
+}
+
+/* Botões */
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-red {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-green {
+  background: #16d116;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .topo-geral {
+    gap: 5px;
+  }
+  
+  .label {
+    padding: 0 8px;
+    font-size: 0.7rem;
+  }
+  
+  .topo-geral .produto, .topo-geral .salvar {
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+}

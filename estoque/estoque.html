@@ -4,20 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cantinho do Pet - Cliente</title>
+  <title>Cantinho do Pet - Estoque</title>
   <link rel="stylesheet" href="../assets/css/reset.css" />
-  <link rel="stylesheet" href="../assets/css/clientes_style.css" />
+  <link rel="stylesheet" href="../assets/css/estoque.css" />
 </head>
 <body>
   <div id="header"></div>
-  <div id="pageType" data-type="cliente"></div>
+  <div id="pageType" data-type="estoque"></div>
 
   <script src="/assets/js/header.js"></script>
 
   <main>
 
     <div class="botoes-topo">
-      <a href="cadastro_cliente.html" class="btn-verde">NOVO CLIENTE</a>
+      <a href="inventario.html" class="btn-verde">+ INVENTÁRIO</a>
 
       <button class="btn-branco">EXPORTAR</button>
 
@@ -25,9 +25,9 @@
         <div class="dropdown">
           <button class="filtro-btn">🔍</button>
           <div class="dropdown-conteudo">
-            <label><input type="radio" name="filtro" checked /> ID Cliente</label>
-            <label><input type="radio" name="filtro" /> Cliente</label>
-            <label><input type="radio" name="filtro" /> Telefone</label>
+            <label><input type="radio" name="filtro" checked /> N° Inventário</label>
+            <label><input type="radio" name="filtro" /> CNPJ</label>
+            <label><input type="radio" name="filtro" /> Dt.Contagem</label>
           </div>
         </div>
         <input type="text" placeholder="Pesquisar..." />
@@ -38,14 +38,11 @@
       <table>
         <thead>
           <tr>
-            <th>ID Cliente</th>
-            <th>Cliente</th>
-            <th>Telefone</th>
-            <th>Nome Pet</th>
-            <th>Espécie</th>
-            <th>Raça</th>
-            <th>Idade</th>
-            <th>Ações</th>
+            <th>N° Inventário</th>
+            <th>CNPJ</th>
+            <th>Fornecedor</th>
+            <th>Dt. Contagem</th>
+            <th>Quantidade</th>
           </tr>
         </thead>
         <tbody></tbody>

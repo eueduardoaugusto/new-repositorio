@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantinho do Pet - Estoque</title>
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/inventario.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <div id="pageType" data-type="inventario"></div>
+
+  <script src="/assets/js/header.js"></script>
+
+  <main>
+    <div class="topo-geral">
+    <a href="estoque.html" class="voltar">⬅</a>
+
+    <div class="info">
+        <span class="label">N° INVENTÁRIO</span>
+        <span class="valor" id="numInventario"></span>
+    </div>
+
+    <div class="info fornecedor">
+        <span class="label">FORNECEDOR</span>
+        <span class="valor" id="nomeFornecedor"></span>
+    </div>
+
+    <button type="button" class="produto" onclick="abrirPopupProduto()">+ PRODUTO</button>
+    <button type="submit" class="salvar">SALVAR</button>
+    </div>
+
+
+        <section class="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>Código de Barras</th>
+                    <th>Produto</th>
+                    <th>Tamanho</th>
+                    <th>Estoque</th>
+                    <th>Qt. Contada</th>
+                    <th>Divergência</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-body"></tbody>
+        </table>
+        </section>
+
+        
+
+        <div id="popupProduto" class="popup">
+        <div class="popup-content produto-modal">
+
+            <h2>NOVO PRODUTO<br>PARA INCLUSÃO</h2>
+
+            <form id="form-novo-produto">
+
+            <div class="container-input">
+                <label>Código de Barra</label>
+                <input type="text" id="new-barcode" required />
+            </div>
+
+            <div class="container-input">
+                <label>Produto</label>
+                <input type="text" id="new-nome" required />
+            </div>
+
+            <div class="row-inputs">
+                <div class="container-input half">
+                <label>Tamanho</label>
+                <input type="text" id="new-tamanho" required />
+                </div>
+
+                <div class="container-input half">
+                <label>Estoque</label>
+                <input type="number" id="new-estoque" required />
+                </div>
+            </div>
+
+            <div class="container-input full-width">
+                <label class="label-long">Quantidade Contada</label>
+                <input type="number" id="new-contada" required />
+            </div>
+
+            <div class="popup-buttons">
+                <button type="button" onclick="fecharPopupProduto()" class="btn-red">CANCELAR</button>
+                <button type="submit" class="btn-green">SALVAR</button>
+            </div>
+
+            </form>
+        </div>
+        </div>
+
+  </main>
+
+  <script src="../assets/js/inventario.js"></script>
+
+</body>
+
+</html>
