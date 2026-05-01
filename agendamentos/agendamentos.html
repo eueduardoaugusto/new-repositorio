@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos</title>
+
+    <link rel="stylesheet" href="../assets/css/agendamentos.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="header"></div>
+    <div id="pageType" data-type="agendamentos"></div>
+
+    <main class="container-agendamentos">
+
+        <!-- PRÓXIMOS HORÁRIOS -->
+        <section class="card horarios-card">
+
+            <div class="card-title">
+                <h2>PROXIMOS HORÁRIOS</h2>
+
+                <div class="date-navigation">
+                    <button><i class="fa-solid fa-circle-arrow-left"></i></button>
+                    <span>22 de Setembro de 2025</span>
+                    <button><i class="fa-solid fa-circle-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="horarios-list">
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>11:00</span>
+                        <span>11:30</span>
+                    </div>
+
+                    <div class="pet-tag">B</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>11:40</span>
+                        <span>12:30</span>
+                    </div>
+
+                    <div class="pet-tag">T</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>13:00</span>
+                        <span>14:10</span>
+                    </div>
+
+                    <div class="pet-tag">BT</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>14:20</span>
+                        <span>14:50</span>
+                    </div>
+
+                    <div class="pet-tag">B</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>15:00</span>
+                        <span>15:30</span>
+                    </div>
+
+                    <div class="pet-tag">B</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>15:40</span>
+                        <span>16:10</span>
+                    </div>
+
+                    <div class="pet-tag">T</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>16:20</span>
+                        <span>16:50</span>
+                    </div>
+
+                    <div class="pet-tag">B</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+                <div class="horario-item">
+                    <div class="time">
+                        <span>17:00</span>
+                        <span>17:30</span>
+                    </div>
+
+                    <div class="pet-tag">B</div>
+
+                    <div class="cliente">
+                        Ricardo Fernandes (Belinha)
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-flag"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="scroll-buttons">
+                <button><i class="fa-solid fa-circle-arrow-up"></i></button>
+                <button><i class="fa-solid fa-circle-arrow-down"></i></button>
+            </div>
+
+        </section>
+
+        <!-- CENTRO -->
+        <section class="middle-section">
+
+            <div class="card agenda-card">
+                <h1>Agenda<br>Completa</h1>
+            </div>
+
+            <div class="card options-card">
+
+                <h2>OUTRAS OPÇÕES</h2>
+
+                <div class="options-buttons">
+
+                    <button class="option-btn">
+                        REALIZAR<br>AGENDAMENTO
+                    </button>
+
+                    <button class="option-btn">
+                        ATUALIZAR<br>RETIRADA
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RETIRADA -->
+        <section class="card retirada-card">
+
+            <h2>AGUARDANDO RETIRADA</h2>
+
+            <div class="pets-grid">
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Lili</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Bela</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Dilan</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Lili</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Bela</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=500" alt="">
+                    <div class="pet-info">
+                        <h3>Dilan</h3>
+                        <p>Fernanda</p>
+                        <span>há 10 minutos</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scroll-buttons retirada-scroll">
+                <button><i class="fa-solid fa-circle-arrow-up"></i></button>
+                <button><i class="fa-solid fa-circle-arrow-down"></i></button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="/assets/js/header.js"></script>
+    <script src="/assets/js/agendamentos.js"></script>
+
+</body>
+</html>

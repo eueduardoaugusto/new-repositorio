@@ -1,0 +1,311 @@
+/* agendamentos.css */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #efefef;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* CONTAINER */
+
+.container-agendamentos{
+    width: 100%;
+    min-height: calc(100vh - 80px);
+
+    padding: 40px;
+
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* CARD PADRÃO */
+
+.card{
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* HORÁRIOS */
+
+.horarios-card{
+    width: 320px;
+    position: relative;
+}
+
+.card-title h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.date-navigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.date-navigation button{
+    border: none;
+    background: transparent;
+    color: #66d1ae;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.date-navigation span{
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.horarios-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    max-height: 620px;
+    overflow-y: auto;
+
+    padding-right: 5px;
+}
+
+.horario-item{
+    background: white;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.time{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.65rem;
+    color: #666;
+}
+
+.pet-tag{
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    background: #d8d8d8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.cliente{
+    flex: 1;
+    font-size: 0.72rem;
+    color: #333;
+}
+
+.more-btn{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #444;
+}
+
+/* MEIO */
+
+.middle-section{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.agenda-card{
+    width: 380px;
+    height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agenda-card h1{
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.options-card{
+    width: 380px;
+    min-height: 220px;
+}
+
+.options-card h2{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.options-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.option-btn{
+    width: 120px;
+    height: 90px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: #b6f0d8;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.option-btn:hover{
+    transform: translateY(-3px);
+}
+
+/* RETIRADA */
+
+.retirada-card{
+    width: 470px;
+    position: relative;
+}
+
+.retirada-card h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 35px;
+}
+
+.pets-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+}
+
+.pet-card{
+    background: white;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+
+    border-bottom: 4px solid #66d1ae;
+}
+
+.pet-card img{
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.pet-info{
+    padding: 8px;
+}
+
+.pet-info h3{
+    font-size: 0.9rem;
+}
+
+.pet-info p{
+    font-size: 0.75rem;
+}
+
+.pet-info span{
+    font-size: 0.75rem;
+    color: #444;
+}
+
+/* SCROLL */
+
+.scroll-buttons{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.scroll-buttons button{
+    border: none;
+    background: transparent;
+    color: #66d1ae;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 1300px){
+
+    .container-agendamentos{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .horarios-card,
+    .agenda-card,
+    .options-card,
+    .retirada-card{
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .pets-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 600px){
+
+    .container-agendamentos{
+        padding: 20px;
+    }
+
+    .pets-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .options-buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .agenda-card h1{
+        font-size: 3rem;
+    }
+
+}
