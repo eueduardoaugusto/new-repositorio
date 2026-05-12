@@ -98,7 +98,7 @@ FRONTEND:
 No **MySQL Workbench**, execute o comando SQL abaixo:
 
 ```sql
-CREATE DATABASE projeto_faculdade;
+CREATE DATABASE cantinho_pet;
 ```
 
 ### 📤 2. Importar o arquivo .sql
